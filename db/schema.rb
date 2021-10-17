@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_022744) do
+ActiveRecord::Schema.define(version: 2021_10_17_060543) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "name"
+    t.string "postal_code"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +31,14 @@ ActiveRecord::Schema.define(version: 2021_10_17_022744) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cartitems", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "customer_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -44,6 +61,21 @@ ActiveRecord::Schema.define(version: 2021_10_17_022744) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.integer "purchase_price"
+    t.integer "making_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "postage"
@@ -53,6 +85,9 @@ ActiveRecord::Schema.define(version: 2021_10_17_022744) do
     t.integer "total_payment"
     t.integer "order_status"
     t.integer "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer "genre_id"
@@ -60,10 +95,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_022744) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-    t.boolean "ia_sale", default: true
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.boolean "is_sale", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
