@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
+  end
 
   namespace :public do
     get 'homes/top'
     get 'homes/about'
-
   end
   devise_for :admins
   devise_for :customers
