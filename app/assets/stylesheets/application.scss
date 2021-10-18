@@ -17,6 +17,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-.btn1 {
+header.btn1 {
   border-radius: 30px;
+}
+
+header.link {
+  text-decoration: none;
+  color: black;
 }
