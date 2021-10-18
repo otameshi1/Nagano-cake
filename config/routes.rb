@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  
+
   # ーーーーーーーーーー管理者側ーーーーーーーーーーーー
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
       }
-  
+
 
   namespace :admin do
     resources :customers,only: [:new, :create, :destory]
@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
  #  ーーーーーーーーーー顧客側ーーーーーーーーーーーー
   devise_for :customers, controllers: {
-    sessions: 'publics/sessions'
-    sessions: 'public/customers/sessions'
-   }
+    sessions: 'public/customers/sessions',
+    registrations: 'public/customers/registrations'
+  }
 
   scope module: :public do
     root 'homes#top'
