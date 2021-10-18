@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  
   # ーーーーーーーーーー管理者側ーーーーーーーーーーーー
-  # devise_for :admins, controllers: {
-  # sessions: 'admins/sessions'
-  #     }
-  # ----上記はエラー部分のため、コメントアウトーーー
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+      }
+  
 
   namespace :admin do
     resources :customers,only: [:new, :create, :destory]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
  #  ーーーーーーーーーー顧客側ーーーーーーーーーーーー
   devise_for :customers, controllers: {
     sessions: 'publics/sessions'
+    sessions: 'public/customers/sessions'
    }
 
   scope module: :public do
@@ -32,17 +34,10 @@ Rails.application.routes.draw do
     resources :products,only: [:index, :show]
     resource :genres,only: [:index]
     resources :cart_items,only: [:show, :new, :create, :destroy]
-     delete 'cart_items' => 'cart_items#destroy_all' 
-    
+     delete 'cart_items' => 'cart_items#destroy_all'
   end
-  devise_for :admins
-  devise_for :customers
-  # ,controllers: {
-  # sessions:      'customers/sessions',
-  # passwords:     'customers/passwords',
-  # registrations: 'customers/public'
-  # }
- 
+
+
 
 
 end
