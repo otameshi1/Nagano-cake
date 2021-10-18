@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       }
   
 
-  namespace :admin do
-    resources :customers,only: [:new, :create, :destory]
+  namespace :admins do
+    resources :customers,only: [:index, :show, :edit, :update]
     resources :orders_ditails,only: [:index, :show]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
     resources :genres,only: [:edit, :create, :index]

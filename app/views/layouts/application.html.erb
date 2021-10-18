@@ -15,6 +15,8 @@
         <div class="container">
           <%= link_to "LOGO", class: 'navbar-brand' %>
 
+
+       <%#　ーーーー カスタマー側ヘッダー ーーーーー%>
           <% if customer_signed_in? %>
             <div id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto nav">
@@ -50,6 +52,30 @@
               </ul>
             </div>
           <% end %>
+
+          <%#　ーーーー 管理側ヘッダー ーーーーー%>
+          <% if admin_signed_in? %>
+            <div id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto nav">
+                <li　class="btn1">
+                  <%= link_to "マイページ", class: 'navbar-brand' %>
+                </li>
+                <li　class="btn1">
+                  <%= link_to "商品一覧", class: 'navbar-brand' %>
+                </li>
+                <li　class="btn1">
+                  <%= link_to "カート", class: 'navbar-brand' %>
+                </li>
+                <li　class="btn1">
+                  <%= link_to "ログアウト",destroy_admin_session_path,method: :delete,class: 'navbar-brand' %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+
+
+
+
 
         </div>
       </div>
