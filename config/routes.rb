@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'customers/withdraw' => 'customers#withdraw'
     resources :address,only: [:edit, :update, :show, :destory, :index, :create]
     resources :orders,only: [:new, :create]
+      get 'orders/confirm' => 'orders#confirm'
     resources :order_ditails,only: [:edit, :update, :show, :destory]
       get 'order_ditails/thanks' => 'order_ditails#thanks'
     resources :products,only: [:index, :show]
