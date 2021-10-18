@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
  #  ーーーーーーーーーー顧客側ーーーーーーーーーーーー
   devise_for :customers, controllers: {
-    sessions: 'pubics/sessions'
+    sessions: 'publics/sessions'
    }
 
   scope module: :public do
