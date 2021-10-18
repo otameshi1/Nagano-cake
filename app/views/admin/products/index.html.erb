@@ -1,1 +1,11 @@
+<h1>商品一覧<h1>
 
+<% @products.each do |products|%>
+<%= products.id %>
+<%= attachment_image_tag products, :image %>
+<%= products.name %>
+<%= products.price %>
+<%= products.genre_id %>  
+<%= products.is_sale %>
+
+<% end %>
