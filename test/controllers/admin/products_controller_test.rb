@@ -1,23 +1,23 @@
 require 'test_helper'
 
-class Admins::ProdactsControllerTest < ActionDispatch::IntegrationTest
+class Admin::ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get admins_prodacts_index_url
+    get admin_products_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get admins_prodacts_show_url
+    get admin_products_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get admins_prodacts_new_url
+    get admin_products_new_url
     assert_response :success
   end
 
   test "should get edit" do
-    get admins_prodacts_edit_url
+    get admin_products_edit_url
     assert_response :success
   end
 
