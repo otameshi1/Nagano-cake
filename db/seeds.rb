@@ -10,3 +10,15 @@ Admin.create!(
   email: 'admin@admin',
   password: 'testtest'
 )
+
+Customer.create!(
+  first_name: "test",
+  last_name: "test",
+  first_name_kana: "test",
+  last_name_kana: "test",
+  email: 'customer@test1111',
+  postal_code: "0001111",
+  address: "test",
+  phone_number: "00011112222",
+  password: 'testtest'
+  )
