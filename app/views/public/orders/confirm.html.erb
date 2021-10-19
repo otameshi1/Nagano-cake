@@ -1,0 +1,45 @@
+<h1>注文情報確認画面</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |detail| %>
+    <tr>
+      <td><%= detail.products.name %></td>
+      <td><%= detail.purchase_price %></td>
+      <td><%= detail.quantity %></td>
+      <td><%= detail.purprice * detail.quantity %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>送料</td>
+    <td>800</td>
+  </tr>
+  <tr>
+    <td>商品合計</td>
+    <td><%# 商品合計の記述方法をメンターに質問 %></td>
+  </tr>
+  <tr>
+    <td>請求金額</td>
+    <td><%= @order_details.orders.total_payment %></td>
+  </tr>
+</table>
+
+<h2>支払方法</h2>
+<%= @order_details.order.payment_method %>
+
+<h2>お届け先</h2>
+<%= @order_details.order.postal_code %><%= @order_details.order.addresses_name %><br />
+<%= @order_details.order.customer_id %>
+
+<%= link_to "注文を確定する", order_details_thanks_path, class: "btn btn-success %>
