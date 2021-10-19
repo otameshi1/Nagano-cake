@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      ジャンル検索
+    </div>
+    <div class="col-4">
+      <%= attachment_image_tag @product, :image, :fill, 100, 100, fallback:"no_image.png" %>
+    </div>
+    <div class="col-4">
+      <%= @product.name %>
+      <%= @product.introduction %>
+      ¥<%= @product.price * 1.1 %>（税込）
+      <% form_with (model: @product, @cart), cart_item_path, local:true do |f| %>
+        <%= f.number_field :quantity, max: 20%>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
+    </div>
+  </div>
+</div>
