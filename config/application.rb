@@ -18,6 +18,4 @@ module Naganokaki
   end
 
 
-
-
 end

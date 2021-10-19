@@ -13,7 +13,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @new_product = Product.new(item_params)
     @new_product.save!
-     redirect_to admin_order_details_path
+     redirect_to admin_products_path
   end
 
   def edit

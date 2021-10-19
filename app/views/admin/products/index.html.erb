@@ -1,11 +1,28 @@
-<h1>商品一覧<h1>
+<h4>商品一覧</h4>
+<div class="container">
+<%= link_to "",new_admin_product_path,class:"fas fa-plus-circle " %>
 
-<% @products.each do |products|%>
-<%= products.id %>
-<%= attachment_image_tag products, :image %>
-<%= products.name %>
-<%= products.price %>
-<%= products.genre_id %>  
-<%= products.is_sale %>
+  <table class="table table-hover m-5">
+    <thead>
+      <tr>
+        <th scope="col">商品ID</th>
+        <th scope="col">商品名</th>
+        <th scope="col">税抜き価格</th>
+        <th scope="col">ジャンル</th>
+        <th scope="col">ステータス</th>
+      </tr>
+    </thead>
+    <% @products.each do |products|%>
+    <tbody>
+      <tr>
+        <th scope="row"><%= products.id %></th>
+        <td><%= link_to products.name,admin_product_path(products) %></td>
+        <td><%= products.price %></td>
+        <td><%= products.genre_id %></td>
+        <td><%= products.is_sale %></td>
+      </tr>
+    </tbody>
+    <% end %>
 
-<% end %>
+  </table>
+</div>
