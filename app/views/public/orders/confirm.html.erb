@@ -1,4 +1,5 @@
 <h1>注文情報確認画面</h1>
+<% @sum = 0 %>
 <table>
   <thead>
     <tr>
@@ -9,6 +10,7 @@
     </tr>
   </thead>
   <tbody>
+  <%# newページのform_withの値（未記録）をそのまま使う %>
     <% @order_details.each do |detail| %>
     <tr>
       <td><%= detail.products.name %></td>
@@ -26,12 +28,14 @@
     <td>800</td>
   </tr>
   <tr>
+  <%# 上記tableの小計欄にsumをたして商品合計で@sumを表示することで合計金額とする。 %>
     <td>商品合計</td>
-    <td><%# 商品合計の記述方法をメンターに質問 %></td>
+    <td><%= @sum  %></td>
   </tr>
   <tr>
+    <%# @sumと送料をたした金額　もしくは新しい変数(=0)を使用する %>
     <td>請求金額</td>
-    <td><%= @order_details.orders.total_payment %></td>
+    <td><%= @sum +  %></td>
   </tr>
 </table>
 

@@ -30,15 +30,12 @@ Rails.application.routes.draw do
     resources :address,only: [:edit, :update, :show, :destory, :index, :create]
     resources :orders,only: [:new, :create]
       get 'orders/confirm' => 'orders#confirm'
-<<<<<<< Updated upstream
     
     resources :order_details,only: [:edit, :update, :show, :destory]
       get 'order_details/thanks' => 'order_details#thanks'
 
-=======
     resources :order_details,only: [:edit, :update, :show, :destory]
       get 'order_details/thanks' => 'order_details#thanks'
->>>>>>> Stashed changes
     resources :products,only: [:index, :show]
     resource :genres,only: [:index]
     resources :cart_items,only: [:show, :new, :create, :destroy]
