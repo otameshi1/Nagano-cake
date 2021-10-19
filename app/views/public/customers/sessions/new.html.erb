@@ -3,11 +3,13 @@
 
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "public/customers/shared/error_messages", resource: resource %>
+
     メールアドレス
     <%= f.email_field :email %>
 
     パスワード
-    <%= f.text_field :encrypted_password %>
+    <%= f.text_field :password %>
     <%= f.submit "ログイン" %>
   <% end %>
 
