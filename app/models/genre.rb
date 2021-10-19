@@ -1,5 +1,6 @@
 class Genre < ApplicationRecord
   has_many :products
 
-  validates :name, precense: true
+   validates :name, precense: true
 end
+
