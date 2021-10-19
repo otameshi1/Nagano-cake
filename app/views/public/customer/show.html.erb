@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>マイページ</h5>
+      <div class="index">
+        <p class="registrations">登録情報</p>
+        <%= link_to "編集する", edit_customer(customer_id) %>
+      </div>
+      <table>
+        <tr>
+          <td>氏名</td>
+          <td><%= Customer.first_name %><%= Customer.last_name %></td>
+        </tr>
+        <tr>
+          <td>カナ</td>
+          <td><%= Customer.first_name_kana %><%= Customer.last_name_kana %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= Customer.postal_code %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
