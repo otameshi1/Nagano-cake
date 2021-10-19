@@ -1,42 +1,51 @@
 <h2>新規会員登録</h2>
 
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/customers/shared/error_messages", resource: resource %>
-
-
-      名前
-      （姓）<%= f.text_field :first_name %>
-      （名）<%= f.text_field :last_name %>
- 
-      フリガナ
-      （セイ）<%= f.text_field :first_name_kana %>
-      （メイ）<%= f.text_field :last_name_kana %>
-    
-  
-      メールアドレス
-      <%= f.email_field :email %>
-   
-      郵便番号（ハイフンなし）
-     <%= f.text_field :postal_code %>
-
-      住所
-     <%= f.text_field :address %>
-
-      電話番号（ハイフンなし）
-      <%= f.text_field :phone_number %>
-
-     パスワード（６文字以上）
-    
-        <%= f.password_field :password, autocomplete: "new-password" %>
-  
- 
-      パスワード（確認用)
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-   
-   <%= f.submit "新規登録"%>
-   
-  <% end %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= render "public/customers/shared/error_messages", resource: resource %>
+ <table class="table table-borderless">
+  <tbody>
+   <tr>
+    <td>名前</td>
+    <td>（姓）<%= f.text_field :first_name, placeholder: "令和", autofocus: true %></td>
+    <td>（名）<%= f.text_field :last_name, placeholder: "太朗" %></td>
+   </tr>
+   <tr>
+    <td>フリガナ</td>
+    <td>（セイ）<%= f.text_field :first_name_kana, placeholder: "レイワ" %></td>
+    <td>（メイ）<%= f.text_field :last_name_kana, placeholder: "タロウ" %></td>
+   </tr>
+   <tr>
+    <td>メールアドレス</td>
+    <td><%= f.email_field :email, placeholder: "xxxxx@zzz.jp" %></td>
+   </tr>
+   <tr>
+    <td>郵便番号（ハイフンなし）</td>
+    <td><%= f.text_field :postal_code, placeholder: "0001111" %></td>
+   </tr>
+   <tr>
+    <td>住所</td>
+    <td><%= f.text_field :address, placeholder: "00011112222" %></td>
+   </tr>
+   <tr>
+    <td>電話番号（ハイフンなし）</td>
+    <td><%= f.text_field :phone_number, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+   </tr>
+   <tr>
+    <td>パスワード（６文字以上）</td>
+    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+   </tr>
+   <tr>
+    <td>パスワード（確認用)</td>
+    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+   </tr>
+   <tr>
+    <td></td>
+    <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+   </tr>
+  </tbody>
+ </table>
+<% end %>
 
 
 
