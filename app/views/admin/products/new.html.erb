@@ -3,7 +3,7 @@
       <div class="col-mt-5 ">
           <h1>商品登録</h1>
 
-          <%= form_with model: new_product,url:admin_products_path,method: :post,local:true do |f| %>
+          <%= form_with model: @new_product,url:admin_products_path,method: :post,local:true do |f| %>
               <table class="new-form-table text-align">
                 <tbody>
                   <tr>
