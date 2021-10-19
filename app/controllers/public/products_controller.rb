@@ -4,7 +4,7 @@ class Public::ProductsController < ApplicationController
         @products = Product.all
         @product = Product.page(params[:page])
     end
-    
+
     def show
         @product = Product.find(params[:id])
         @cart = Cartitem.select.(:quantity)
