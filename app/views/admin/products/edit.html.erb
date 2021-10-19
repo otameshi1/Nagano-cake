@@ -1,2 +1,45 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<div class="container">
+     <div class="row">
+      <div class="col-mt-5 ">
+          <h1>商品編集</h1>
+
+          <%= form_with model:@product,url:admin_product_path,method: :PATCH,local:true do |f| %>
+              <table class="new-form-table text-align">
+                <tbody>
+                  <tr>
+                    <th>商品画像</th>
+                    <td><%=  f.attachment_field :image %></td>
+                  </tr>
+
+                  <tr>
+                    <th>商品名</th>
+                    <td><%= f.text_field :name,class: "form-control ml-5" %></td>
+                  </tr>
+
+                  <tr>
+                    <th>商品説明</th>
+                    <td><%= f.text_area :introduction,class: "form-control ml-5" %></td>
+                  </tr>
+
+                   <tr>
+                    <th>ジャンル</th>
+                    <td><%= f.hidden_field :genre_id,class: "form-control ml-5" %></td>
+                  </tr>
+                   <tr>
+                    <th>価格</th>
+                    <td><%= f.number_field :price,class: "form-control ml-5" %></td>
+                  </tr>
+                   <tr>
+                    <th>販売ステータス</th>
+                    <td></td></td>
+                  </tr>
+
+                 </tbody>
+                </table>
+                  <div class="text-right">
+                    <%= f.submit "編集" ,class: "btn btn-primary text-center" %>
+                 </div>
+              </div>
+          <% end %>
+    </div>
+</div>

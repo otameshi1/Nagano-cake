@@ -1,11 +1,10 @@
 <h4>商品詳細</h4>
 <div class="container">
   <div class="row">
-    <div class="col-md4">
-     <%= attachment_image_tag @product, :image %>
-     </div>
-
-     <div class="col-md-5">
+    <div class="col-md6 center-block">
+     <%= attachment_image_tag @product, :image,size:'200x200', fallback:"no_image.png" %>
+    </div>
+     <div class="col-md-8">
       <table class="new-form-table text-align">
         <tbody>
           <tr>
@@ -30,7 +29,7 @@
           </tr>
         </tbody>
       </table>
-            <%= link_to "編集する",edit_admin_product_path,class:'btn '%>
+            <%= link_to "編集する",edit_admin_product_path,class:'btn btn-primary btn-lg'%>
     </div>
   </div>
 </div>
