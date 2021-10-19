@@ -4,7 +4,7 @@
       ジャンル検索
     </div>
     <div class="col-4">
-      <%= attachment_image_tag @product, :image, :fill, 100, 100, fallback:"no_image.png" %>
+      <%= attachment_image_tag @product, :image, size: "200x200", fallback:"no_image.png" %>
     </div>
     <div class="col-4">
       <%= @product.name %>
