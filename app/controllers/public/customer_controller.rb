@@ -1,6 +1,6 @@
 class Public::CustomerController < ApplicationController
-
-    def index
-        @products = Product.all
+    
+    def show
+        @customer = Customer.find(params[:id])
     end
 end

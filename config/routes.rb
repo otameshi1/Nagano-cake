@@ -27,8 +27,13 @@ Rails.application.routes.draw do
     resources :customers,only: [:edit, :update, :show]
       get 'customers/unsubscribe' => 'customers#unsubscribe'
       get 'customers/withdraw' => 'customers#withdraw'
-    resources :address,only: [:edit, :update, :show, :destory, :index, :create]
+    resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
     resources :orders,only: [:new, :create]
+      get 'orders/confirm' => 'orders#confirm'
+    
+    resources :order_details,only: [:edit, :update, :show, :destory]
+      get 'order_details/thanks' => 'order_details#thanks'
+
     resources :order_details,only: [:edit, :update, :show, :destory]
       get 'order_details/thanks' => 'order_details#thanks'
     resources :products,only: [:index, :show]
