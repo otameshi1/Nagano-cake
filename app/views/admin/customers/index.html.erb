@@ -1,0 +1,8 @@
+<h1>会員一覧</h1>
+
+<% @customers.each do |costomers| %>
+<%= costomers.id %>
+<%= link_to costomers.name,admin_product_path(costomers.id) %>
+<%= costomers.email %>
+<%= costomers.is_deleted %>
+<% end %>
