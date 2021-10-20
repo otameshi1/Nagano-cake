@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get "homes/about" => "homes#about"
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get 'customers/withdraw' => 'customers#withdraw'
     resources :customers,only: [:edit, :update, :show]
-      get 'customers/unsubscribe' => 'customers#unsubscribe'
-      get 'customers/withdraw' => 'customers#withdraw'
     resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
     resources :orders,only: [:new, :create]
 

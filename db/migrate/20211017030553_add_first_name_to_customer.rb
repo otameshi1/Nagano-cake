@@ -1,5 +1,5 @@
 class AddFirstNameToCustomer < ActiveRecord::Migration[5.2]
   def change
-    add_column :customers, :is_deleted, :boolean
+    add_column :customers, :is_deleted, :boolean, default: false, null: false
   end
 end
