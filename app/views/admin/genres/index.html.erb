@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+      <h3 class=midashi>ジャンル一覧・追加画面<span class= "deco">🍰</span></h3>
+    </div>
+    <%= form_with model: @genre, url: admin_genres_path, method: :post, local:true do |f| %>
+      <div class="row">
+        <div class="col-md-3"><h5>ジャンル名を追加する<span class=migi>⇨</span></h5></div>
+        <div class="new-text"><%= f.text_field :name, size:"30%" %></div>
+        <div><%= f.submit '新規登録',class: "btn btn-danger" %></div>
+      </div>
+    <% end %>
+    <h4>新規登録ボタンを押したらジャンルが保存されて下のテーブルに表示されます。</h4>
+    <div class="row2">
+      <div class="col-md-5">
+          <table class="table">
+           <tr>
+             <th class="genre-thead">ジャンル名</th>
+             <th class="genre-thead"></th>
+             <th class="genre-thead"></th>
+             <th class="genre-thead"></th>
+             <th class="genre-thead"></th>
+           </tr>
+           <% @genres.each do |genre|%>
+            <tr>
+              <td class="genre-tbody"><%= genre.name %></td>
+              <td class="genre-tbody"></td>
+              <td class="genre-tbody"></td>
+              <td class="genre-tbody"></td>
+              <td class="genre-tbody"><%= link_to '編集する',edit_admin_genre_path(genre), class: "btn btn-primary" %></td>
+            </tr>
+           <% end %>
+          </table>
+      </div>
+    </div>
+</div>
+ <style>
+    body{
+      background-color:#f0bc94;
+    }
+    .deco{
+      margin-left:5px;
+    }
+    h4{
+      color: red;
+      margin-bottom: 50px;
+    }
+    h5 {
+      letter-spacing:3px;
+      color:indigo;
+    }
+    .migi {
+      color:red;
+    }
+    .new-text{
+      margin-bottom: 60px;
+      margin-right: 20px;
+    }
+      .midashi {
+        background: -webkit-gradient(linear, left top, left bottom, from(#422814), to(gray));
+        background: linear-gradient(#422814, gray);
+        color: silver;
+        transition: .3s;
+        margin-top: 30px;
+        margin-bottom: 80px;
+        padding: 15px;
+      }
+      .midashi:hover {
+         background: -webkit-gradient(linear, left top, left bottom, from(purple), to(#bc8f8f));
+        background: linear-gradient(purple, black);
+      }
+      .genre-thead {
+        background: -webkit-gradient(linear, left top, left bottom, from(#422814), to(gray));
+        background: linear-gradient(silver, gray);
+        color: snow;
+      }
+      .genre-tbody{
+        color: green;
+        background-color:snow;
+      }
+    </style>

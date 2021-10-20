@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:index, :show, :edit, :update]
     resources :order_details,only: [:index, :show]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
-    resources :genres,only: [:edit, :create, :index]
+    resources :genres,only: [:edit, :create, :index, :create, :update]
   end
 
 
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get 'customers/withdraw' => 'customers#withdraw'
     resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
     resources :orders,only: [:new, :create]
+
       get 'orders/confirm' => 'orders#confirm'
     
     resources :order_details,only: [:edit, :update, :show, :destory]
