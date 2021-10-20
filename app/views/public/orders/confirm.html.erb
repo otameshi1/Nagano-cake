@@ -10,12 +10,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @order_details.each do |detail| %>
+    <% @orders.each do |order| %>
     <tr>
-      <td><%= detail.products.name %></td>
-      <td><%= detail.purchase_price %></td>
+      <td><%= order.order_detail.products.name %></td>
+      <td><%= detail.purchase_price * 1.1 %></td>
       <td><%= detail.quantity %></td>
-      <td><%= @sum + detail.purprice * detail.quantity %></td>
+      <td><%= detail.purprice * detail.quantity %></td>
+      <% @sum += detail.purprice * detail.quantity %>
     </tr>
     <% end %>
   </tbody>
@@ -40,10 +41,10 @@
 
   <%# newページのform_withの値（未記録）をそのまま使う %>
 <h2>支払方法</h2>
-<%= @order_details.order.payment_method %>
+<%= @orders.payment_method %>
 
 <h2>お届け先</h2>
 <%= @order_details.order.postal_code %><%= @order_details.order.addresses_name %><br />
 <%= @order_details.order.customer_id %>
 
-<%= link_to "注文を確定する", order_details_thanks_path, class: "btn btn-success %>
+<%= link_to "注文を確定する", order_details_thanks_path, class: "btn btn-success" %>

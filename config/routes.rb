@@ -26,24 +26,23 @@ Rails.application.routes.draw do
     get "homes/about" => "homes#about"
 
     resources :customers,only: [:edit, :update, :show]
-      get 'customers/unsubscribe' => 'customers#unsubscribe'
-      get 'customers/withdraw' => 'customers#withdraw'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get 'customers/withdraw' => 'customers#withdraw'
 
     resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
 
+    post 'orders/confirm' => 'orders#confirm'
     resources :orders,only: [:new, :create]
 
-      get 'orders/confirm' => 'orders#confirm'
-
+    get 'order_details/thanks' => 'order_details#thanks'
     resources :order_details,only: [:edit, :update, :show, :destory]
-      get 'order_details/thanks' => 'order_details#thanks'
 
     resources :products,only: [:index, :show]
 
     resource :genres,only: [:index]
- 
-    resources :cart_items,only: [:show, :new, :create, :destroy]
-      delete 'cart_items' => 'cart_items#destroy_all'
+
+    resources :carts,only: [:show, :new, :update, :destroy]
+      delete 'carts' => 'carts#destroy_all', as: 'cart_destroy'
   end
 
 
