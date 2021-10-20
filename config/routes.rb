@@ -24,14 +24,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get "homes/about" => "homes#about"
-
-    resources :customers,only: [:edit, :update, :show]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/withdraw' => 'customers#withdraw'
-
-    resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
-
-    post 'orders/confirm' => 'orders#confirm'
+    resources :customers,only: [:edit, :update, :show]
+    resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
     resources :orders,only: [:new, :create]
 
     get 'order_details/thanks' => 'order_details#thanks'
