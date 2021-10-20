@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers,only: [:index, :show, :edit, :update]
-    resources :order_details,only: [:index, :show]
+    resources :order_details,only: [:index, :show, :update]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
     resources :genres,only: [:edit, :create, :index, :create, :update]
   end
@@ -26,10 +26,14 @@ Rails.application.routes.draw do
     get "homes/about" => "homes#about"
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/withdraw' => 'customers#withdraw'
-    resources :customers,only: [:edit, :update, :show]
-    resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
-    resources :orders,only: [:new, :create]
 
+    resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
+
+    get 'orders/confirm' => 'orders#confirm'
+
+    resources :customers,only: [:edit, :update, :show]
+
+    resources :orders,only: [:new, :create]
     get 'order_details/thanks' => 'order_details#thanks'
     resources :order_details,only: [:edit, :update, :show, :destory]
 

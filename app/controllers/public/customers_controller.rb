@@ -22,6 +22,9 @@ class Public::CustomersController < ApplicationController
         @customer.update(is_deleted: true)
         reset_session
         redirect_to root_path
+        else 
+        render :edit
+        end
     end
 
     private

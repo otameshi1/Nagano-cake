@@ -1,24 +1,36 @@
-<h2>管理者ログイン</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+<div class="container">
+  <div class="col mt-5">
+  <h4>管理者ログイン</h4>
+    <table class="table table-borderless">
+     
+     <tbody>
+    <div class="field">
+      <tr>
+        <td><%= f.label :メールアドレス %><br /></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email",size: 50, placeholder: "sample@example.com" %></td>
+      </tr>
+      </div>
+      
+      <div class="field">
+      <tr>
+        <td> <%= f.label :パスワード %><br /></td>
+        <td><%= f.password_field :password, autocomplete: "current-password",size: 50 %></td>
+      </tr>
+      </div>
+      <tr>
+       <div class="actions">
+         <td></td>
+        <td><%= f.submit "ログイン",class: "btn btn-primary  mt-2" %></td>
+        </div>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+ </div>
+</div>
 
 <h1> email: 'admin@admin', </h1>
 <h1> password: 'testtest' </h1>
 <p> *アップ時には消します</p>
 
-
-<%= render "admin/shared/links" %>
