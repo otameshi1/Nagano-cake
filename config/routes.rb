@@ -26,8 +26,13 @@ Rails.application.routes.draw do
     get "homes/about" => "homes#about"
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/withdraw' => 'customers#withdraw'
+
+    resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
+
+    get 'orders/confirm' => 'orders#confirm'
+
     resources :customers,only: [:edit, :update, :show]
-    resources :address,only: [:edit, :update, :show, :destroy, :index, :create]
+
     resources :orders,only: [:new, :create]
     get 'order_details/thanks' => 'order_details#thanks'
     resources :order_details,only: [:edit, :update, :show, :destory]
