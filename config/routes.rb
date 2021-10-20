@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers,only: [:new, :create, :destory]
-    resources :orders_ditails,only: [:index, :show]
+    resources :order_details,only: [:index, :show]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
-    resources :genres,only: [:edit, :create, :index]
+    resources :genres,only: [:edit, :create, :index, :create, :update]
   end
 
 
@@ -27,8 +27,8 @@ Rails.application.routes.draw do
       get 'customers/withdraw' => 'customers#withdraw'
     resources :address,only: [:edit, :update, :show, :destory, :index, :create]
     resources :orders,only: [:new, :create]
-    resources :order_ditails,only: [:edit, :update, :show, :destory]
-      get 'order_ditails/thanks' => 'order_ditails#thanks'
+    resources :order_details,only: [:edit, :update, :show, :destory]
+      get 'order_details/thanks' => 'order_details#thanks'
     resources :products,only: [:index, :show]
     resource :genres,only: [:index]
     resources :cart_items,only: [:show, :new, :create, :destroy]
