@@ -1,7 +1,13 @@
-<h4>商品一覧</h4>
-<div class="container">
-<%= link_to "",new_admin_product_path,class:"fas fa-plus-circle " %>
 
+<div class="container">
+  <div class="row ">
+     <h4>商品一覧</h4>
+    <div class="mt ml-auto">
+    <div class="text-right">
+<%= link_to "+",new_admin_product_path,class:"btn btn-primary rounded-circle p-0",style:"width:2rem;height:2rem;" %>
+
+ </div>  
+</div>
   <table class="table table-hover m-5">
     <thead>
       <tr>
@@ -12,18 +18,20 @@
         <th scope="col">ステータス</th>
       </tr>
     </thead>
-    <% @products.each do |products|%>
+    <% @product.each do |products|%>
     <tbody>
       <tr>
         <th scope="row"><%= products.id %></th>
         <td><%= link_to products.name,admin_product_path(products) %></td>
-        <td><%= products.price %></td>
+        <td><%= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
         <td><%= products.genre_id %></td>
-        <td><%= products.ia_sale %></td>
+        <td><%= products.is_sale %></td>
       </tr>
     </tbody>
     <% end %>
 
   </table>
+  </div>
 </div>
-<%= paginate @products %>
+
+<%= paginate @product %>
