@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+         <h3 class="midashi">ジャンル編集</h3>
+    </div>
+   
+    <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name %>
+    <%= f.submit "変更を保存",class: "btn btn-success" %>
+    <% end %>
+</div>
+<div class="deco1">👪</div>
+<div class="deco2">🎂</div>
+<style>
+    body{
+        background-color:pink;
+    }
+    .deco1{
+        margin-left:600px;
+        font-size:200px;
+    }
+    .deco2{
+        margin-top:-200px;
+        margin-left:500px;
+        font-size:400px;
+    }
+    .midashi {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding: 15px;
+        background-color:  background: -webkit-gradient(linear, left top, left bottom, from(#422814), to(gray));
+        background: linear-gradient(#422814, gray);;
+        color: white;
+        opacity:0.7;
+        
+    }
+    .midashi:hover {
+         background: -webkit-gradient(linear, left top, left bottom, from(purple), to(#bc8f8f));
+        background: linear-gradient(purple, black);
+      }
+    
+</style>
