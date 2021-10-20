@@ -18,6 +18,6 @@ class Admin::CustomersController < ApplicationController
      redirect_to admin_customers_path
     else
       render :edit
-  end
+    end
   end
 end
