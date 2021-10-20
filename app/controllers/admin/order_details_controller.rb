@@ -1,21 +1,29 @@
 class Admin::OrderDetailsController < ApplicationController
     # before_action :authenticate_ad
     def index
-        @details = Order_Detail.all
         @orders = Order.all
-        @product = Product.all
+        # @order = Cartitem.find(params[:id])
+        # @product = Product.all
     end
     
     def show
-        @detail = Order_Detail.find(params[:id])
-        @order = Order.find(order.id)
-        @orders = Order_Detail.new
-        @product = @Product.find(product.id)
+        @order = Order.find(params[:id])
+    end
+    
+    def update
+        # @detail = Detail.find(params[:id])
+        # @detail = Detail.order
+        # @detail.making_status_auto_update
+        # redirect_to admins_order_details_path(@order)
+        # @order = Order.find(params[:id])
+        # @order.update(order_update_params)
+        # @order.order_detail_status_auto_update
+        # redirect_to admins_order_details
     end
     
     private
     
      def order_update_params
-         params.require(:detail).permit(:making_status)
+         params.require(:order_detail).permit(:making_status)
      end
 end
