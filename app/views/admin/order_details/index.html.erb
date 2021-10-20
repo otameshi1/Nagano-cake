@@ -12,17 +12,19 @@
             　<th class="detail-thead">ステータス</th>
             </tr>
           </thead>
-          <!--ここにいーち-->
           <tbody>
-              <td class="detail-tbody"><%= @order.update_at.strftime("%Y/%m/%d %H:%M") %></td>
-            　<td class="detail-tbody"><%= @order.name %></td>
-            　<td class="detail-tbody"><%= order_details.quantity %></td>
-            　<td class="detail-tbody">
-            　    <%= form_with model: detail, url: admin_order_ditails_path do |f| %>
-　                  <%= f.select :making_status, Order_Detail.making_statuses.{}%>
-　                  <%=f.submit "更新" %>
-　                <% end %>
-　           </td>
+              <% @orders.each do |order| %>
+              <tr>
+                  <td class="detail-tbody"><%= order.update_at.strftime("%Y/%m/%d %H:%M") %></td>
+                　<td class="detail-tbody"><%= order.name %></td>
+                　<% total=0 %>
+                　<% order.order_details.each do |order_detail| %>
+                　 <% total += order_detail.quantity %>
+                　 <% end %>
+                　<td class="detail-tbody"><%= total %></td>
+                　<td class="detail-tbody"><%= order.order_status %></td>
+            　</tr>
+            　<% end %>
           </tbody>
         </table>
     </div>   
