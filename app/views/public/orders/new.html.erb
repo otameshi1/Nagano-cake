@@ -1,0 +1,33 @@
+<h1>注文情報入力</h1>
+<%= form_with model: @order, local:true do |f| %>
+<h2>支払い方法</h2>
+<%= f.radio_button :payment_method, :クレジットカード %>
+<%= f.radio_button :payment_method, :銀行振込 %>
+
+<h2>お届け先</h2>
+  <%= f.radio_button :addresses_name, :ご自身の住所 %>
+  <%= current_user.customer.postal_code %>
+  <%= current_user.customer.address %><br />
+  <%= current_user.customer.first_name %><%= current_user.customer.last_name %>
+
+  <%# DBの値からプルダウンメニューを作成する方法を参照 %>
+  <%= f.radio_button :addresses_name, :登録済住所から選択 %>
+  <%= f.collection_select %>
+
+  <%= radio_button :addresses_name, :新しいお届け先 %>
+    <p>
+      郵便番号(ハイフンなし)
+      <%= f.text_field :postal_code, placeholder: "0000000" %>
+    </p>
+    <p>
+      住所
+      <%= f.text_field :addresses_name, placeholder: "東京都渋谷区代々木神園町0-0" %>
+    </p>
+    <p>
+      宛名
+      <%= f.text_field :name, placeholder: "令和道子" %>
+    </p>
+
+  <%= f.submit "確認画面へ進む", orders_confirm_path, class: "btn btn-primary" %>
+
+  <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_060543) do
+ActiveRecord::Schema.define(version: 2021_10_19_065413) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 2021_10_17_060543) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
@@ -56,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_10_17_060543) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "is_deleted"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_060543) do
     t.integer "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "products", force: :cascade do |t|
@@ -95,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_060543) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-    t.boolean "ia_sale", default: true
+    t.boolean "is_sale", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
