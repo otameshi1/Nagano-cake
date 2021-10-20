@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      ジャンル検索
+      <diV>
+        ジャンル検索
+        <% @genres.each do |genre| %>
+          <%= link_to genre.name, products_path %>
+        <% end %>
+      </diV>
     </div>
     <div class="col-4">
       <%= attachment_image_tag @product, :image, size: "200x200", fallback:"no_image.png" %>
