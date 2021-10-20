@@ -1,18 +1,17 @@
 <div class="container">
+  <div class="row">
   <h3>注文履歴詳細</h3>
-  <table class="rable">
-　<div class="row">
-　  <div class="">
+  <table class="table">
 　    <tr>
 　      <td>購入者</td>
-　      <td><%= link_to admin_order_path(@order.order.id) do %>
+　      <td><%= link_to admin_customer_path(@order.order.id) do %>
 　          <%= @order.name %>
 　          <% end %>
 　      </td>
 　     </tr>
 　     <tr>
 　       <td>注文日</td>
-　       <td><%= @order.update_at.strftime("%Y/%m/%d %H:%M") %></td>
+　       <td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
 　     </tr>
 　     <tr>
 　         <td>配送先</td>
@@ -21,14 +20,15 @@
 　     <tr>
 　         <td>注文ステータス</td>
 　         <td>
-　             <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-　             <%= f.select :status, Order.statuses.keys.map{} %>
+　             <%= form_with model: @order, url: admin_order_detail, method: :patch, local: true do |f| %>
+　             <%= f.select :status, Order.order_status.keys.to_a %>
 　             <%= f.submit '更新', class: "btn btn-success btn-sm" %>
 　             <% end %>
 　         </td>
 　     </tr>
 　 </table>
 　    <table class="table">
+　      <thead>
 　        <tr>
 　            <th>商品名</th>
 　            <th>単価</th>
@@ -36,17 +36,18 @@
 　            <th>小計</th>
 　            <th>制作ステータス</th>
 　        </tr>
-　        <% @detail.each do |detail| %>
+　       </thead>
+　        <% @order.order_details.each do |order_detail| %>
 　        <tr>
-　            <td><%= oder_id.name %></td>
-　            <td><%= product_id.price %></td>
-　            <td><%= order_details.quantity %></td>
-　            <td><%= order_details.total_payment %></td>
+　            <td><%= order_detail.product_id %></td>
+　            <td><%= (order_detail.order_id * 1.1).round(0) %></td>
+　            <td><%= order_detail.quantity %></td>
+　            <td><%= (order_details.purchase_price * 1.1) %></td>
 　            <td>
 　                <%= form_with model: detail, url: admin_order_ditails_path do |f| %>
-　                  <%= f.select :making_status, Order_Detail.making_statuses.{}%>
-　                  <%=f.submit "更新" %>
-　                <% end %>
+　                  <%= f.select <%= f.select :status, OrderDetail.making_status.keys.to_a %>
+　                  <%=f.submit "更新", class: "btn btn-success btn-sm" %>
+　         <% end %>
 　            </td>
 　          </tr>
 　        <% end %>
@@ -57,7 +58,8 @@
 　    <table class="table">
 　      <!--商品合計-->
 　      <% total= 0 %>
-　      <% @orders.each do |detail| %>
+　      <% @order.each do |order| %>
+　      <% total = total + ((product.price * 1.1).round(0) * product.amount) %>
 　      <tr>
 　        <td>商品合計</td>
 　        <td><% total %>円</td>
@@ -68,7 +70,7 @@
 　      </tr>
 　      <tr>
 　        <td>請求金額</td>
-　        <td><% @order.total_payment%></td>
+　        <td><% @order.total_payment%>円</td>
 　      </tr>
 　    </table>
 　      <% end %>
