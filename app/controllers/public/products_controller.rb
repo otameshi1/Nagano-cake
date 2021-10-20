@@ -8,5 +8,7 @@ class Public::ProductsController < ApplicationController
     def show
         @product = Product.find(params[:id])
         @cart = Cartitem.select.(:quantity)
+        @genres = Genre.all
     end
+
 end
