@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
   
   def index
-    @customers = Customer.all
+    @customer = Customer.page(params[:page]).per(3)
   end
 
   def show
@@ -18,6 +18,6 @@ class Admin::CustomersController < ApplicationController
      redirect_to admin_customers_path
     else
       render :edit
-    end
+  end
   end
 end

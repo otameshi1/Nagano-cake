@@ -18,7 +18,7 @@
         <th scope="col">ステータス</th>
       </tr>
     </thead>
-    <% @products.each do |products|%>
+    <% @product.each do |products|%>
     <tbody>
       <tr>
         <th scope="row"><%= products.id %></th>
@@ -34,4 +34,4 @@
   </div>
 </div>
 
-<%#= paginate @products %>
+<%= paginate @product %>

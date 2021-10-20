@@ -12,13 +12,13 @@
         <th scope="col">ステータス</th>
       </tr>
     </thead>
-    <% @customers.each do |costomers| %>
+    <% @customer.each do |costomer| %>
     <tbody>
       <tr>
-        <th scope="row"><%= costomers.id %></th>
-        <td><%= link_to costomers.first_name + costomers.last_name,admin_customer_path(costomers.id) %></td>
-        <td><%= costomers.email %></td>
-        <td><%= costomers.is_deleted %></td>
+        <th scope="row"><%= costomer.id %></th>
+        <td><%= link_to costomer.first_name + costomer.last_name,admin_customer_path(costomer.id) %></td>
+        <td><%= costomer.email %></td>
+        <td><%= costomer.is_deleted %></td>
       </tr>
     </tbody>
     <% end %>
@@ -28,6 +28,6 @@
 
 
 
-<%#= paginate @p%>
+<%= paginate @customer%>
 
 <!-- kaminariが使えない-->
