@@ -39,8 +39,10 @@
 　       </thead>
 　        <% @order.order_details.each do |order_detail| %>
 　        <tr>
-　            <td><%= order_detail.product_id %></td>
-　            <td><%= (order_detail.order_id * 1.1).round(0) %></td>
+　          <% @order.products.each do |product| %>
+　            <td><%= product.name %></td>
+　            <td><%= (product.price * 1.1).round(0) %></td>
+　          <% end %> 
 　            <td><%= order_detail.quantity %></td>
 　            <td><%= (order_details.purchase_price * 1.1) %></td>
 　            <td>
