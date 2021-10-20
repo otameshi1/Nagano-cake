@@ -2,12 +2,16 @@
 
 class Public::Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+
   before_action :customer_state, only: [:create]
+
 
   # GET /resource/sign_in
   # def new
   #   super
   # end
+
+
 
   # POST /resource/sign_in
   # def create
@@ -25,7 +29,7 @@ class Public::Customers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
@@ -35,4 +39,5 @@ class Public::Customers::SessionsController < Devise::SessionsController
     end
   end
   
+
 end
