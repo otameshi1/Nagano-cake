@@ -1,5 +1,21 @@
 class Public::OrdersController < ApplicationController
-  def confirm
-    @order_details = OrderDetail.all
+  def new
+    @order = Order.new
   end
+
+  def confirm
+    @orders = Order.all
+    @order = Order.new(order_params)
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.save
+  end
+
+  private
+  def order_params
+    params.require(:order).permite(:addresses_name, :postal_code, :payment_method, :name)
+  end
+
 end

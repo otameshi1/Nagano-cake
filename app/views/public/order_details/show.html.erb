@@ -1,0 +1,64 @@
+<h1>注文履歴詳細</h1>
+
+<h4>注文情報</h4>
+<table>
+  <tbody>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order_detail.created_at %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td>
+       <%= @order_detail.order.postal_code %><br />
+       <%= @order_detail.order.addresses_name %><br />
+       <%= @order_detail.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order_detail.order.payment_method %></td>
+    </tr>
+    <tr>
+      <td>ステータス</td>
+      <td><%= @order_detail.order.order_status %></td>
+    </tr>
+  </tbody>
+</table>>
+
+<%# 注文情報確認画面の送料、商品合計、請求金額欄と同じく@sumを使い計算する %>
+<h4>請求情報</h4>
+<table>
+  <tbody>
+    <tr>
+      <td>商品合計</td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>注文内容</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order_details.each do |detail| %>
+  <tr>
+    <td><%= detail.product.name %></td>
+    <td><%= detail.product.price * 1.1 %></td>
+    <td><%= detail.quantity %></td>
+    <td><%= detail.product.price * detail.quantity %></td>
+  </tr>
+  </tbody>
+</table>

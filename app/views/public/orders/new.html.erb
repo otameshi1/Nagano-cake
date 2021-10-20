@@ -1,36 +1,33 @@
 <h1>注文情報入力</h1>
-<h2>支払い方法</h2>
-<%= form_tag(controller: "orders", action: "new") do %>
-  <%= radio_button_tag("r1", "クレジットカード") %>
-  <%= label_tag("r1_クレジットカード", "クレジットカード") %>
-  <%= radio_button_tag("r2", "クレジットカード") %>
-  <%= label_tag("r2_クレジットカード") %>
-<% end %>
+<%= form_with model: @order, local:true do |f| %>
+  <h2>支払い方法</h2>
+  <%= f.radio_button :payment_method, :クレジットカード %>
+  <%= f.radio_button :payment_method, :銀行振込 %>
 
-<h2>お届け先</h2>
-<%= form_tag(controller: "orders", action: "new") do %>
-  <%= radio_button_tag("r1", "ご自身の住所") %>
-  <%= label_tag("r1_ご自身の住所", "ご自身の住所") %>
-  
+  <h2>お届け先</h2>
+  <%= f.radio_button :addresses_name, :ご自身の住所 %>
+  <%= f.postal_code %>
+  <%= f.addresses_name %><br />
+  <%= f.name %>
+
   <%# DBの値からプルダウンメニューを作成する方法を参照 %>
-  <%= radio_button_tag("r2", "登録済住所から選択") %>
-  <%= label_tag("r2_登録済住所から選択") %>
-  <%# ここまで %>
+    <%= f.radio_button :addresses_name, :登録済住所から選択 %>
+    <%= f.collection_select :addresses_id, Address.all, :postal_code, :address, :name %>
 
-  <%= radio_button_tag("r3", "新しいお届け先") %>
-  <%= form_with model:@address, local:true do |f| %>
+  <%= radio_button :addresses_name, :新しいお届け先 %>
     <p>
       郵便番号(ハイフンなし)
       <%= f.text_field :postal_code, placeholder: "0000000" %>
     </p>
     <p>
       住所
-      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+      <%= f.text_field :addresses_name, placeholder: "東京都渋谷区代々木神園町0-0" %>
     </p>
     <p>
       宛名
       <%= f.text_field :name, placeholder: "令和道子" %>
     </p>
-  <% end %>
 
-  <%= link_to "確認画面へ進む", orders_confirm_path, class: "btn btn-primary" %>
+  <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+
+<% end %>

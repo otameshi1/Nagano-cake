@@ -1,0 +1,77 @@
+<div class="container">
+  <h3>注文履歴詳細</h3>
+  <table class="rable">
+　<div class="row">
+　  <div class="">
+　    <tr>
+　      <td>購入者</td>
+　      <td><%= link_to admin_order_path(@order.order.id) do %>
+　          <%= @order.name %>
+　          <% end %>
+　      </td>
+　     </tr>
+　     <tr>
+　       <td>注文日</td>
+　       <td><%= @order.update_at.strftime("%Y/%m/%d %H:%M") %></td>
+　     </tr>
+　     <tr>
+　         <td>配送先</td>
+　         <td><%= @order.addresses_name %></td>
+　     </tr>
+　     <tr>
+　         <td>注文ステータス</td>
+　         <td>
+　             <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+　             <%= f.select :status, Order.statuses.keys.map{} %>
+　             <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+　             <% end %>
+　         </td>
+　     </tr>
+　 </table>
+　    <table class="table">
+　        <tr>
+　            <th>商品名</th>
+　            <th>単価</th>
+　            <th>数量</th>
+　            <th>小計</th>
+　            <th>制作ステータス</th>
+　        </tr>
+　        <% @detail.each do |detail| %>
+　        <tr>
+　            <td><%= oder_id.name %></td>
+　            <td><%= product_id.price %></td>
+　            <td><%= order_details.quantity %></td>
+　            <td><%= order_details.total_payment %></td>
+　            <td>
+　                <%= form_with model: detail, url: admin_order_ditails_path do |f| %>
+　                  <%= f.select :making_status, Order_Detail.making_statuses.{}%>
+　                  <%=f.submit "更新" %>
+　                <% end %>
+　            </td>
+　          </tr>
+　        <% end %>
+　    </table>
+　  </div>
+　  <!--商品値段-->
+　  <div class="col-4">
+　    <table class="table">
+　      <!--商品合計-->
+　      <% total= 0 %>
+　      <% @orders.each do |detail| %>
+　      <tr>
+　        <td>商品合計</td>
+　        <td><% total %>円</td>
+　      </tr>
+　      <tr>
+　        <td>送料</td>
+　        <td><%= @order.postage%>円</td>
+　      </tr>
+　      <tr>
+　        <td>請求金額</td>
+　        <td><% @order.total_payment%></td>
+　      </tr>
+　    </table>
+　      <% end %>
+　  </div>
+　</div>
+</div>
