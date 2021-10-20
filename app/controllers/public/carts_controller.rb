@@ -1,6 +1,6 @@
 class Public::CartsController < ApplicationController
 
-  def show
+  def new
     @cart_items.customer.id = current_user.id
     @cart_items　= CartItem.all
     @cart = CartItem.new
@@ -13,9 +13,15 @@ class Public::CartsController < ApplicationController
   end
 
   def destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to request.referer
   end
 
   def destroy_all
+    cart_item = CartItem.all
+    cart_item.destroy
+    redirect_to request.referer
   end
 
   private
