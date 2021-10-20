@@ -1,10 +1,17 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    render : 'confirm'
+    render : confirm
   end
 
+  def create
+    @order = Order.new(order_params)
+    render : confirm
+
   def confirm
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to 
   end
 
   private

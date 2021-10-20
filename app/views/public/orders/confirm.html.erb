@@ -10,13 +10,12 @@
     </tr>
   </thead>
   <tbody>
-  <%# newページのform_withの値（未記録）をそのまま使う %>
     <% @order_details.each do |detail| %>
     <tr>
       <td><%= detail.products.name %></td>
       <td><%= detail.purchase_price %></td>
       <td><%= detail.quantity %></td>
-      <td><%= detail.purprice * detail.quantity %></td>
+      <td><%= @sum + detail.purprice * detail.quantity %></td>
     </tr>
     <% end %>
   </tbody>
@@ -35,10 +34,11 @@
   <tr>
     <%# @sumと送料をたした金額　もしくは新しい変数(=0)を使用する %>
     <td>請求金額</td>
-    <td><%= @sum +  %></td>
+    <td><%= @sum + 800 %></td>
   </tr>
 </table>
 
+  <%# newページのform_withの値（未記録）をそのまま使う %>
 <h2>支払方法</h2>
 <%= @order_details.order.payment_method %>
 

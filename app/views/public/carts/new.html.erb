@@ -21,7 +21,7 @@
       <td><%= f.number_field :quantity %></td>
       <td><%= f.submit "変更", cart_items_path, class: "btn btn-success" %></td>
       <% end %>
-      <td><%= item.price * item.cart_item.quantity %></td>
+      <td><%= @sum + item.price * item.cart_item.quantity %></td>
       <td><%= link_to "削除する", cart_item_path(item.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
