@@ -11,9 +11,9 @@ class Admin::OrderDetailsController < ApplicationController
     end
     
     def update
-        @detail = Detail.find(params[:id])
-        @detail = Detail.order
-        @detail.making_status_auto_update
+        detail = OrderDetail.find(params[:id])
+        detail = OrderDetail.order
+        detail.making_status_auto_update
         redirect_to admins_order_details_path(@order)
         @order = Order.find(params[:id])
         @order.update(order_update_params)

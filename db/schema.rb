@@ -56,13 +56,10 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
-<<<<<<< HEAD
     t.boolean "is_deleted"
-=======
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_deleted", default: false, null: false
->>>>>>> 68dc037b0117e6c8af282caa44512d0436af619a
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -102,11 +99,8 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-<<<<<<< HEAD
     t.boolean "ia_sale", default: true
-=======
     t.string "is_sale", default: "t"
->>>>>>> 68dc037b0117e6c8af282caa44512d0436af619a
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
