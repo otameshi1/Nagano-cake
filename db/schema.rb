@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-    t.boolean "is_sale", default: true
+    t.string "is_sale", default: "t"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
