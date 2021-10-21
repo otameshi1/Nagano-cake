@@ -26,13 +26,14 @@
         <td><%= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
         <td><%= products.genre_id %></td>
         
-        <%= products.is_sale %>
-        <% if products.is_sale == 0 %>
+        <% if products.is_sale == true %>
         <td>販売中</td>
-        <% elsif products.is_sale == 1 %>
-        <td>販売停止 </td>
+         <% else %>
+        <td>販売</td>
         <% end %>
         
+        
+ 
       </tr>
     </tbody>
     <% end %>
