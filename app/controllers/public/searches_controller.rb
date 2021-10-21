@@ -22,7 +22,11 @@ class Public::SearchesController < ApplicationController
   
   def seach_for(how)
     case how
-    when 
+    when "match"
+      match(value)
+    when "partical"
+      partical(value)
+    end
   end
   
 end
