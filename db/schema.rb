@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
@@ -98,11 +96,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-<<<<<<< HEAD
-    t.boolean "ia_sale", default: true
-=======
     t.string "is_sale", default: "t"
->>>>>>> 68dc037b0117e6c8af282caa44512d0436af619a
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

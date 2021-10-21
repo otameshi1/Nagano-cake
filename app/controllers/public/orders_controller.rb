@@ -12,6 +12,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    render :confirm
   end
 
   private
