@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
@@ -56,7 +54,6 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_deleted", default: false, null: false
@@ -99,7 +96,6 @@ ActiveRecord::Schema.define(version: 2021_10_19_065413) do
     t.text "introduction"
     t.string "image_id"
     t.integer "price"
-    t.boolean "ia_sale", default: true
     t.string "is_sale", default: "t"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
