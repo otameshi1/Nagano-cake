@@ -6,7 +6,7 @@ class Public::ProductsController < ApplicationController
 
     def show
         @product = Product.find(params[:id])
-        @cart = Cartitem.select.(:quantity)
+        @cart = Cartitem.new
         @genres = Genre.all
     end
 

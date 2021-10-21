@@ -10,6 +10,9 @@
             購入には会員登録が必要になります。
             </p>
             <h1>新着商品</h1>
+             <% if flash[:notice] %>
+                <%= flash[:notice] %>
+            <% end %>
         </div>
     </div>
 </div>
