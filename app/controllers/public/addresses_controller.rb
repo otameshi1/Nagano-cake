@@ -6,18 +6,26 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    address = Address.new(address_params)
-    address.save
+    @address = Address.new(address_params)
+    @address.save
     redirect_to request.referer
   end
 
   def edit
     @address = Address.find(params[:id])
+    @address.customer_id = current_customer.id
+  end
+
+  def update
+    @address = Address.find(params[:id])
     @address.update(address_params)
-    redirect_to address_index_path
+    redirect_to addresses_path
   end
 
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to request.referer
   end
 
   private
