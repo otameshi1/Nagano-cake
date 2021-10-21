@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/withdraw' => 'customers#withdraw'
     resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
-    get 'orders/confirm' => 'orders#confirm'
+
+    post 'orders/confirm' => 'orders#confirm'
+
     resources :customers,only: [:edit, :update, :show]
     resources :orders,only: [:new, :create]
     get 'order_details/thanks' => 'order_details#thanks'
