@@ -33,11 +33,11 @@
                   </tr>
                    <tr>
                     <th>販売ステータス</th>
-                    <td><%= f.label :on_sale %>
-                        <%= f.radio_button :is_sale,:on_sale %></td>
+                    <td><%= f.label :販売 %>
+                        <%= f.radio_button :is_sale,:true %></td>
                         <!--販売中【0】-->
-                        <td><%= f.label :off_sale %>
-                        <%= f.radio_button :is_sale,:off_sale %></td>
+                        <td><%= f.label :販売停止 %>
+                        <%= f.radio_button :is_sale,:false %></td>
                         <!--販売停止【1】-->
                   </tr>
 
