@@ -1,10 +1,16 @@
 class Public::CartsController < ApplicationController
 
-  def new
-    @carts = Cartitem.all
-    @cart = Cartitem.new
+  # def new
+  #   # @carts = Cartitem.all
+  #   # @cart = Cartitem.new
+  # end
+  def create
+    @cart = Cartitem.new(cart_params)
+    @cart.customer_id = current_customer.id
+    @cart.product_id = Product.find(params[:cartitem][:product_id]).id
+    @cart.save!
+    redirect_to new_cart_path
   end
-
   def update
     cart = Cartitem.new(cart_params)
     cart.save
@@ -25,7 +31,7 @@ class Public::CartsController < ApplicationController
 
   private
   def cart_params
-    params.require(:cartitem).permit(:quantity)
+    params.require(:cartitem).permit(:product_id, :customer_id, :quantity)
   end
 
 end

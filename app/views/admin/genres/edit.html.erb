@@ -4,7 +4,7 @@
     </div>
    
     <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
-        <h4><%= f.label :name, "ジャンル名" %></h4>
+        <h4><%= f.label :name, "ジャンル名" %>🎉</h4>
         <%= f.text_field :name %>
     <%= f.submit "変更を保存",class: "btn btn-success" %>
     <% end %>
@@ -13,7 +13,9 @@
 <div class="deco2">🎂</div>
 <style>
     h4{
+        letter-spacing:5px;
         color:yellow;
+        text-shadow: 2px 3px 4px silver;
     }
     body{
         background-color:black;
