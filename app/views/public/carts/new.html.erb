@@ -17,12 +17,12 @@
     <tr>
       <td><%= cart.product.name %></td>
       <td><%= cart.product.price * 1.1 %></td>
-      <%= form_with model:@cart, url: cart_path, local:true do |f| %>
+      <%= form_with model:cart, url: cart_path(cart.id), local:true do |f| %>
         <td><%= f.number_field :quantity %></td>
         <td><%= f.submit "変更", class: "btn btn-success" %></td>
       <% end %>
       <td><%= cart.product.price * 1.1 * cart.quantity %></td>
-      <% @sum += cart.price * 1.1 * cart.quantity %>
+      <% @sum += cart.product.price * 1.1 * cart.quantity %>
       <td><%= link_to "削除する", cart_path(cart.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
