@@ -18,7 +18,9 @@
             <h3>商品一覧<span class="small">(全<%= @products.count %>件)</span></h3>
             <div class="rrtt">
                 <% @products.each do |product| %>
+                <div class="card" style="width: 18rem;">
                     <%= link_to product_path(product.id) do %>
+
                         <div class="image"><%= attachment_image_tag product, :image, size: "200x200", fallback:"no_image.png" %></div>
                         <div class="name"><%= product.name %></div>
                         <div class="price">¥<%= number_to_currency(product.price,:precision =>0, :format=>"%n%u", :unit=>"円") %>（税抜き）</div>
@@ -26,7 +28,6 @@
                 <% end %>
             </div>
         </div>
-    <%= paginate @products %>
     </div>
 </div>
 
@@ -49,3 +50,4 @@
     margin-bottom: 50px;
 }
 </style>
+

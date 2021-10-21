@@ -3,6 +3,7 @@
     <div class="col-10">
        <h1 class="itiran">注文画面一覧</h1>
        <h4>＼<span class="blank">下に表示されていますのでご確認ください⬇</span>／</h4>
+       <div class=hitomitotakashi>👫</div>
        <table class="table table-bordered">
         <thead>
             <tr>
@@ -35,10 +36,15 @@
         background-color:#422814;
     }
     .itiran{
-        background:green;
-        color:white;
+        background: -webkit-gradient(linear, left top, left bottom, from(green), to(orange));
+        background: linear-gradient(green, orange);
+        color:snow;
         margin-top:35px;
         margin-bottom:30px;
+    }
+    .hitomitotakashi{
+        font-size:30px;
+        text-align:right;
     }
     h4{
         color: orange;
@@ -54,7 +60,7 @@
     }
     .detail-thead {
         text-align:center;
-        background: -webkit-gradient(linear, left top, left bottom, from(#422814), to(gray));
+        background: -webkit-gradient(linear, left top, left bottom, from(silver), to(gray));
         background: linear-gradient(silver, gray);
         color: snow;
     }

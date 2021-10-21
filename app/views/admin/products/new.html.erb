@@ -1,7 +1,7 @@
 <div class="container">
      <div class="row">
       <div class="col-mt-5 ">
-          <h1>商品登録</h1>
+          <div class="bg-info w-10">商品登録</div>
 
           <%= form_with model: @new_product,url:admin_products_path,method: :post,local:true do |f| %>
               <table class="new-form-table text-align">
@@ -33,7 +33,12 @@
                   </tr>
                    <tr>
                     <th>販売ステータス</th>
-                    <td><%#= f.select :is_sale,{'販売中': true, '販売': fulse},include_blank: "--選択して下さい--",class: "ml-5"%></td>
+                    <td><%= f.label :on_sale %>
+                        <%= f.radio_button :is_sale,:on_sale %></td>
+                        <!--販売中【0】-->
+                        <td><%= f.label :off_sale %>
+                        <%= f.radio_button :is_sale,:off_sale %></td>
+                        <!--販売停止【1】-->
                   </tr>
 
                  </tbody>

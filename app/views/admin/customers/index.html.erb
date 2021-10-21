@@ -2,8 +2,10 @@
 
 
 <div class="container">
-  <h1>会員一覧</h1>
- <table class="table table-hover m-5">
+  <div class="row">
+    <div class="col">
+  <h4>会員一覧</h4>
+ <table class="table table-hover m-2">
     <thead>
       <tr>
         <th scope="col">会員ID</th>
@@ -18,16 +20,26 @@
         <th scope="row"><%= costomer.id %></th>
         <td><%= link_to costomer.first_name + costomer.last_name,admin_customer_path(costomer.id) %></td>
         <td><%= costomer.email %></td>
-        <td><%= costomer.is_deleted %></td>
+
+        <!--falseだったら、退会・入会判断-->
+        <% if costomer.is_deleted == false %>
+        　<td>退会済み</td>
+        <% else %>
+        <td>入会済み</td>
+        <% end %>
+        
       </tr>
     </tbody>
     <% end %>
  </table>
  </div>
+   </div>
+   <div class="col">
+     <p class="text-center">
+      <%= paginate @customer,class:'text-center'%>
+      </p>
+      </div>
+     </div>
 
-
-
-
-<%= paginate @customer%>
 
 <!-- kaminariが使えない-->
