@@ -12,12 +12,13 @@
       <%= attachment_image_tag @product, :image, size: "200x200", fallback:"no_image.png" %>
     </div>
     <div class="col-4">
-      <%= @product.name %>
-      <%= @product.introduction %>
-      ¥<%= @product.price * 1.1 %>（税込）
+      <h1><%= @product.name %></h1>
+      <h4><%= @product.introduction %></h4>
+      <% product_tax = @product.price * 1.1 %>
+      <h3><%= number_to_currency(product_tax,:precision =>0, :format=>"%n%u", :unit=>"円") %></h3>
       <% form_with (model: @product, @cart), cart_item_path, local:true do |f| %>
         <%= f.number_field :quantity, max: 20%>
-        <%= f.submit "カートに入れる" %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
