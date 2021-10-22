@@ -24,7 +24,7 @@
         <th scope="row"><%= products.id %></th>
         <td><%= link_to products.name,admin_product_path(products) %></td>
         <td><%= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
-        <td><%= products.genre_id %></td>
+        <td><%= products.genre.name%></td>
         
         <% if products.is_sale == true %>
         <td>販売中</td>
