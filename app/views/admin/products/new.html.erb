@@ -1,11 +1,10 @@
 <div class="container">
      <div class="row">
       <div class="col-mt-5 ">
-          <div class="bg-info w-10">商品登録</div>
-
+          <h3 class="bg-info w-3">商品登録</h3>
           <%= form_with model: @new_product,url:admin_products_path,method: :post,local:true do |f| %>
-              <table class="new-form-table text-align">
-                <tbody class:'form-control ml-5'>
+              <table class="table table-sm text-align">
+                <tbody>
                   <tr>
                     <th>商品画像</th>
                     <td><%=  f.attachment_field :image,class: "ml-5"%></td>
@@ -23,7 +22,7 @@
 
                    <tr>
                     <th>ジャンル</th>
-                    <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } ,include_blank: "--選択して下さい--",class: "ml-5"%></td>
+                    <td class="m-5"><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] },:class => "mt-5" ,include_blank: "--選択して下さい--" %></td>
                     
                   </tr>
                   
@@ -33,10 +32,10 @@
                   </tr>
                    <tr>
                     <th>販売ステータス</th>
-                    <td><%= f.label :販売 %>
-                        <%= f.radio_button :is_sale,:true %></td>
+                    <td><%= f.label :販売,class:'ml-5' %>
+                        <%= f.radio_button :is_sale,:true %>
                         <!--販売中【0】-->
-                        <td><%= f.label :販売停止 %>
+                        <%= f.label :販売停止 %>
                         <%= f.radio_button :is_sale,:false %></td>
                         <!--販売停止【1】-->
                   </tr>
