@@ -18,15 +18,15 @@
         <th scope="col">ステータス</th>
       </tr>
     </thead>
-    <% @product.each do |products|%>
+    <% @product.each do |product|%>
     <tbody>
       <tr>
-        <th scope="row"><%= products.id %></th>
-        <td><%= link_to products.name,admin_product_path(products) %></td>
-        <td><%= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
-        <td><%= products.genre_id %></td>
-        
-        <% if products.is_sale == true %>
+        <th scope="row"><%= product.id %></th>
+        <td><%= link_to product.name,admin_product_path(product) %></td>
+        <td><%= number_to_currency(product.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+        <td><%#= product.genre.name %></td>
+        <%#=ジャンルが表示できない %>
+        <% if product.is_sale == true %>
         <td>販売中</td>
          <% else %>
         <td>販売</td>
