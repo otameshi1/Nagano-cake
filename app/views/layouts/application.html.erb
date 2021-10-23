@@ -38,8 +38,8 @@
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'navbar-brand' %>
               </ul>
                <%= form_with url:search_path, method: :get, local:true do |f| %>
-                <%= f.text_field "seach[value]", placeholder: "Search" %>
-                <%= f.select "seach[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
+                <%= f.text_field "search[value]", placeholder: "Search" %>
+                <%= f.select "search[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
                 <%= f.submit "検索" %>
               <% end %>
             </div>
@@ -64,8 +64,8 @@
                 </li>
               </ul>
               <%= form_with url:search_path, local:true do |f| %>
-                <%= f.text_field "seach[value]", placeholder: "Search" %>
-                <%= f.select "seach[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
+                <%= f.text_field "search[value]", placeholder: "Search" %>
+                <%= f.select "search[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
                 <%= f.submit "検索" %>
               <% end %>
               <h2>(admin状態)</h2>*↑あとで消します
@@ -87,9 +87,9 @@
                   <%= link_to "ログイン", new_customer_session_path, class: 'navbar-brand' %>
                 </li>
               </ul>
-              <%= form_with url:search_path, local:true do |f| %>
-                <%= f.text_field "seach[value]", placeholder: "Search" %>
-                <%= f.select "seach[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
+              <%= form_with url:search_path, method: :get, local:true do |f| %>
+                <%= f.text_field "search[value]", placeholder: "Search" %>
+                <%= f.select "search[how]", options_for_select({完全一致: :"match", 部分一致: :"partical"}) %>
                 <%= f.submit "検索" %>
               <% end %>
             </div>
