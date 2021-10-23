@@ -1,6 +1,6 @@
 <h1>注文情報確認画面</h1>
 <% @sum = 0 %>
-<table>
+<table class:'table table'>
   <thead>
     <tr>
       <th>商品名</th>
@@ -10,13 +10,20 @@
     </tr>
   </thead>
   <tbody>
+
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.product.name %></td>
-      <td><%= order.product.price * 1.1 %></td>
+      <td><%= number_to_currency(order.product.price * 1.1,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
+      </td>
       <td><%= order.quantity %></td>
-      <td><%= order.product.price * order.quantity %></td>
+      <td>
+<%= number_to_currency(@sum += order.product.price * order.quantity,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+
+<div class='col'>
       <% @sum += order.product.price * order.quantity %>
+      <%# ーーーーーー↑合計金額ーーーーーーー %>
+      <%#= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
     </tr>
     <% end %>
   </tbody>
@@ -36,6 +43,7 @@
     <%# @sumと送料をたした金額もしくは新しい変数(=0)を使用する %>
     <td>請求金額</td>
     <td><%= @sum + 800 %></td>
+    <%# ーーーーーーーー↑請求合計金額ーーーーーーーー %>
   </tr>
 </table>
 
@@ -48,5 +56,17 @@
 <%= @order.name %>
 
 <div>
-  <%= link_to "注文を確定する", order_details_thanks_path, class: "btn btn-success" %>
+<%= form_with model:@order, url: orders_path, method: :post, local:true do |f| %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+<%= f.hidden_field :addresses_name, :value => @order.addresses_name %>
+<%= f.hidden_field :postage, :value => 800 %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %>
+<%= f.hidden_field :total_payment, :value => @sum + 800 %>
+<%= f.hidden_field :order_status, :value =>  0 %>
+<%= f.hidden_field :name, :value => @order.name %>
+  <%= f.submit"注文を確定する", class: "btn btn-success" %>
+  <% end %>
 </div>
+
+
