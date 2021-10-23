@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @orders = Order.all
+    @orders = current_customer.cartitems
     @order = Order.new(order_params)
 
     if params[:order][:payment_method] == "0"
