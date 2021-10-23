@@ -1,21 +1,21 @@
 class Public::CartsController < ApplicationController
 
   def new
-    # @carts = current_customer.cartitems
-   @carts = Cartitem.all
-  # @carts.customer_id = current_customer.id
+        @carts = current_customer.cartitems
+    # @carts = Cartitem.all
+  #  @carts.customer_id = current_customer.id
   end
   def create
     @cart = Cartitem.new(cart_params)
     @cart.customer_id = current_customer.id
     @cart.product_id = Product.find(params[:cartitem][:product_id]).id
-    @cart.save!
+    @cart.save
     redirect_to new_cart_path
   end
   def update
-    cart = Cartitem.new(cart_params)
-    cart.save
-    redirect_to request.referer
+    @cart = Cartitem.find(params[:id])
+    @cart.update(cart_params)
+    redirect_to new_cart_path
   end
 
   def destroy
@@ -25,8 +25,8 @@ class Public::CartsController < ApplicationController
   end
 
   def destroy_all
-    cart_item = Cartitem.all
-    cart_item.destroy
+    @carts = current_customer.cartitems
+    @carts.destroy_all
     redirect_to request.referer
   end
 
