@@ -1,6 +1,7 @@
 class Public::OrderDetailsController < ApplicationController
 
   def index
+
     @order_details = Orderdetail.all
 
     if params[:detail][:making_status] == "0"

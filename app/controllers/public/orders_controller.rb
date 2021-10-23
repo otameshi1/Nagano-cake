@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @orders = Order.all
+    @orders = current_customer.cartitems
     @order = Order.new(order_params)
 
     if params[:order][:payment_method] == "0"
@@ -27,19 +27,33 @@ class Public::OrdersController < ApplicationController
       @order.addresses_name = @order.addresses_name
       @order.postal_code = @order.postal_code
       @order.name = @order.name
+
     end
+    
   end
 
   def create
-    @orders = Order.all
-    @order = Order.new(order_params)
-    @order.save
+     @order = Order.new(order_params)
+     @cartitem = current_customer.cartitems
+     @order.save
+
+     @cartitem.each do |cartitem|
+      @order_detail = OrderDetail.new
+      @order_detail.quantity = cartitem.quantity
+      @order_detail.purchase_price = cartitem.product.price * 1.1
+      @order_detail.making_status = 0
+      @order_detail.order_id = @order.id
+      @order_detail.product_id = cartitem.product_id
+      @order_detail.save
+     end
     redirect_to order_details_thanks_path
   end
 
   private
   def order_params
-    params.require(:order).permit(:addresses_name, :postal_code, :payment_method, :name)
+    params.require(:order).permit(:addresses_name, :postal_code, :payment_method, :name,:postage, :customer_id, :addresses_name, :total_payment, :order_status)
   end
+
+
 
 end
