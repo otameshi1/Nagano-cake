@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
       @order.name = @order.name
 
     end
-    
+
   end
 
   def create
