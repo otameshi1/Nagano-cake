@@ -1,8 +1,9 @@
 class Public::CartsController < ApplicationController
 
   def new
-    @carts = current_customer.id
-    @cart.cartitem_id = Cartitem.find(params[:cartitem][:product_id]).id
+    @carts = current_customer.cartitems
+    @carts = Cartitem.all
+    # cartitem_id = Cartitem.find(params[:cartitem][:product_id]).id
   end
   def create
     @cart = Cartitem.new(cart_params)
