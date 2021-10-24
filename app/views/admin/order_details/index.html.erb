@@ -16,7 +16,7 @@
           <tbody>
               <% @orders.each do |order| %>
               <tr>
-                  <td class="detail-tbody"><%= order.update_at.strftime("%Y/%m/%d %H:%M") %></td>
+                  <td class="detail-tbody"><%=link_to order.updated_at.strftime("%Y/%m/%d %H:%M"),admin_order_detail_path(order.id) %></td>
                 　<td class="detail-tbody"><%= order.name %></td>
                 　<% total=0 %>
                 　<% order.order_details.each do |order_detail| %>
@@ -31,6 +31,7 @@
     </div>   
   </div>
 </div>
+<%= paginate @orders %>
 <style>
     body{
         background-color:#422814;

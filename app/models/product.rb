@@ -1,11 +1,10 @@
 class Product < ApplicationRecord
-    
-    has_many :genres
+
+    belongs_to :genre
     # ,optional: true
     has_many :order_details
     has_many :cartitems
-    
+
+
     attachment :image
-  
-    
 end
