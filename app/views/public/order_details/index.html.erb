@@ -11,18 +11,23 @@
     </tr>
   </thead>
 <tbody>
-  <% @order_details.each do |detail| %>
+  <% @orders.each do |order| %>
     <tr>
-    <td><%= detail.order.created_at %></td>
+      <td><%= order.created_at %></td>
       <td>
-        <%= detail.order.postal_code %><br />
-        <%= detail.order.addresses_name %><br />
-        <%= detail.order.name %>
+        <%= order.postal_code %><br />
+        <%= order.addresses_name %><br />
+        <%= order.name %>
       </td>
-      <td><%= detail.product.name %><br /></td>
-      <td><%= detail.order.total_payment %></td>
-      <td><%= detail.making_status %></td>
-      <td><%= link_to "表示する", order_detail_path(detail.id), class: "btn btn-primary" %></td>
+      <td>
+        <% @details = order.order_details %>
+        <% @details.each do |detail| %>
+          <%= detail.product.name %><br />
+        <% end %>
+      </td>
+      <td><%= order.total_payment %></td>
+      <td><%= order.order_status %></td>
+      <td><%= link_to "表示する", order_detail_path(order.id), class: "btn btn-primary" %></td>
     </tr>
   <% end %>
 </tbody>

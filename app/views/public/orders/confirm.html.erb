@@ -1,6 +1,6 @@
 <h1>注文情報確認画面</h1>
 <% @sum = 0 %>
-<table class:'table table'>
+<table>
   <thead>
     <tr>
       <th>商品名</th>
@@ -14,16 +14,14 @@
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.product.name %></td>
-      <td><%= number_to_currency(order.product.price * 1.1,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
+      <td><%= number_to_currency(order.product.price * 1.1,unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
       </td>
       <td><%= order.quantity %></td>
       <td>
-<%= number_to_currency(@sum += order.product.price * order.quantity *1.1),unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+        <%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
+        <% @sum += order.product.price * order.quantity * 1.1 %>
+      </td>
 
-<div class='col'>
-      <% @sum += order.product.price * order.quantity %>
-      <%# ーーーーーー↑合計金額ーーーーーーー %>
-      <%#= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
     </tr>
     <% end %>
   </tbody>
@@ -37,12 +35,12 @@
   <tr>
   <%# 上記tableの小計欄にsumをたして商品合計で@sumを表示することで合計金額とする。 %>
     <td>商品合計</td>
-    <td><%= @sum  %></td>
+    <td><%= number_to_currency(@sum, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
   </tr>
   <tr>
     <%# @sumと送料をたした金額もしくは新しい変数(=0)を使用する %>
     <td>請求金額</td>
-    <td><%= @sum + 800 %></td>
+    <td><%= number_to_currency(@sum + 800, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
     <%# ーーーーーーーー↑請求合計金額ーーーーーーーー %>
   </tr>
 </table>
