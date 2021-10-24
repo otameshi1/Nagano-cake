@@ -1,9 +1,9 @@
 <h1>注文情報入力</h1>
 <%= form_with model:@order, url: orders_confirm_path, local:true do |f| %>
   <h2>支払い方法</h2>
-  <%= f.radio_button :payment_method, "クレジットカード" %>
+  <%= f.radio_button :payment_method,"gi" %>
   クレジットカード<br />
-  <%= f.radio_button :payment_method, "銀行振込" %>
+  <%= f.radio_button :payment_method,"ku" %>
   銀行振込
 
   <h2>お届け先</h2>
