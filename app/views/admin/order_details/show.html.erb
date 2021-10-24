@@ -28,6 +28,7 @@
 　       </td>
 　     </tr>
 　 </table>
+
 </div>
 <%# -----------上記ページ上段----------------- %>
  <div class="row">
@@ -64,7 +65,8 @@
 <%# ---------------上記ページ下段左側----------------------- %>
 
   <!--商品値段-->
-　  <div class="col-3thead-light">
+
+　  <div class="col md-2">
 　    <table class="table table-borderless">
 　      <!--商品合計-->
 　      <% total= 0 %>
@@ -72,6 +74,7 @@
 　      <% total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity) %>
 <% end %>
 　      <tr>
+
 　        <th>商品合計</th>
 　        <td><%= total %>円</td>
 　      </tr>
@@ -84,8 +87,6 @@
 　        <td><%= total + 800 %>円</td>
 　      </tr>
 　    </table>
-
-　     
 　  </div>
 　</div>
 </div>
