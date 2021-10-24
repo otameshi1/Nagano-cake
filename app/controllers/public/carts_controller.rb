@@ -1,9 +1,17 @@
 class Public::CartsController < ApplicationController
 
   def new
+<<<<<<< HEAD
    @carts = current_customer.cartitems
   # @carts = Cartitem.all
   # @carts.customer_id = current_customer.id
+=======
+
+   @carts = current_customer.cartitems
+  # @carts = Cartitem.all
+  # @carts.customer_id = current_customer.id
+
+>>>>>>> 56500efe0a3d6fdd97c699d3a139b2a914fc4c5f
   end
   def create
     @cart = Cartitem.new(cart_params)

@@ -4,6 +4,11 @@
       <table class="table table-borderless">
 　    <tr>
 　      <th>購入者</th>
+  <div class="col">
+    <h3>注文履歴詳細</h3>
+      <table class="table table-borderless ">
+　    <tr>
+　      <th style="width: 20%">購入者</th>
 　      <td><%= link_to @order.name,admin_customer_path(@order.id) %> </td>
 　    </tr>
 　    <tr>
@@ -32,8 +37,14 @@
  <div class=col>
     <table class="table">
 　      <thead>
+</div>
+<%# -----------上記ページ上段----------------- %>
+ <div class="row">
+ <div class="col-7 ml-3">
+    <table class="table">
+　      <thead class="thead-light">
 　        <tr>
-　            <th class="detail-thead">商品名</th>
+　            <th class="detail-thead",>商品名</th>
 　            <th class="detail-thead">単価</th>
 　            <th class="detail-thead">数量</th>
 　            <th class="detail-thead">小計</th>
@@ -63,6 +74,7 @@
 
   <!--商品値段-->
 　  <div class="col md-2">
+　  <div class="col-3thead-light">
 　    <table class="table table-borderless">
 　      <!--商品合計-->
 　      <% total= 0 %>
@@ -86,9 +98,32 @@
 　    </table>
 
 　      <% end %>
+　        <th>商品合計</th>
+　        <td><%= total %>円</td>
+　      </tr>
+　      <tr>
+　        <th>送料</th>
+　        <td>800円</td>
+　      </tr>
+　      <tr>
+　        <th>請求金額</th>
+　        <td><%= total + 800 %>円</td>
+　      </tr>
+　    </table>
 　  </div>
 　</div>
 </div>
+
+
+
+
+
+
+
+
+<%# -------style_tag-------- %>
+
+
 <style>
   .detail-thead {
         text-align:center;
