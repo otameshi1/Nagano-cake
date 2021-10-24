@@ -33,11 +33,11 @@
     <table class="table">
 　      <thead>
 　        <tr>
-　            <th>商品名</th>
-　            <th>単価</th>
-　            <th>数量</th>
-　            <th>小計</th>
-　            <th>制作ステータス</th>
+　            <th class="detail-thead">商品名</th>
+　            <th class="detail-thead">単価</th>
+　            <th class="detail-thead">数量</th>
+　            <th class="detail-thead">小計</th>
+　            <th class="detail-thead">制作ステータス</th>
 　        </tr>
 　       </thead>
 　        <% @order_detail.each do |order_detail| %>
@@ -83,5 +83,16 @@
 　      </tr>
 　    </table>
 
-　
+　      <% end %>
 　  </div>
+　</div>
+</div>
+<style>
+  .detail-thead {
+        text-align:center;
+        background: -webkit-gradient(linear, left top, left bottom, from(silver), to(gray));
+        background: linear-gradient(silver, gray);
+        color: snow;
+    }
+</style>
+

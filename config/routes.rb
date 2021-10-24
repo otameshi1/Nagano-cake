@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:edit, :update, :show]
     resources :orders,only: [:new, :create]
     get 'order_details/thanks' => 'order_details#thanks'
-    resources :order_details,only: [:edit, :update, :show, :destory]
+    resources :order_details,only: [:edit, :update, :show, :destory, :index]
     resources :products,only: [:index, :show]
     resource :genres,only: [:index]
     resources :carts,only: [:new, :update, :destroy, :create]

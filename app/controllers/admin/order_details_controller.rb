@@ -1,7 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
     # before_action :authenticate_ad
     def index
-        @orders = Order.all
+        @orders = Order.page(params[:page]).per(20)
         # @order = Cartitem.find(params[:id])
         # @product = Product.all
     end

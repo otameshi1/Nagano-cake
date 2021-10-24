@@ -16,12 +16,14 @@
     <% @carts.each do |cart| %>
     <tr>
       <td><%= cart.product.name %></td>
-      <td><%= cart.product.price * 1.1 %></td>
+      <% product_tax = cart.product.price * 1.1 %>
+      <td><%= number_to_currency(product_tax,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
       <%= form_with model:cart, url: cart_path(cart.id), local:true do |f| %>
         <td><%= f.number_field :quantity %></td>
         <td><%= f.submit "変更", class: "btn btn-success" %></td>
       <% end %>
-      <td><%= cart.product.price * 1.1 * cart.quantity %></td>
+      <% subtotal = cart.product.price * 1.1 * cart.quantity %>
+      <td><%= number_to_currency(subtotal,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
       <% @sum += cart.product.price * 1.1 * cart.quantity %>
       <td><%= link_to "削除する", cart_path(cart.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
     </tr>
@@ -34,7 +36,7 @@
 <%# 上記tableの小計欄の合計金額 小計金額の欄にsumをたし計算する %>
 <table>
   <td>合計金額</td>
-  <td><%= @sum %></td>
+  <td><%= number_to_currency(@sum,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
 </table>
 
 <div>
