@@ -1,8 +1,7 @@
 class Public::OrderDetailsController < ApplicationController
 
   def index
-
-    @order_details = OrderDetail.all
+    @orders = current_customer.orders
 
     if params[:making_status] == "0"
       @order_details.making_status = 0
@@ -18,8 +17,8 @@ class Public::OrderDetailsController < ApplicationController
   end
 
   def show
-    @order_detail = OrderDetail.find(params[:id])
-    @order_details = OrderDetail.all
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
 
     if params[:making_status] == "0"
       @order_detail.making_status = 0
