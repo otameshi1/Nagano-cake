@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
     if params[:order][:payment_method] == "クレジットカード"
       @order.payment_method = "クレジットカード"
-    elsif params[:order][:payment_method] = "銀行振込"
+    elsif params[:order][:payment_method] == "銀行振込"
       @order.payment_method = "銀行振込"
     end
 
