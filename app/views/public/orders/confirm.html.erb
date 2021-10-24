@@ -17,9 +17,13 @@
       </td>
       <td><%= order.quantity %></td>
       <td>
-        <%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
-        <% @sum += order.product.price * order.quantity * 1.1 %>
-      </td>
+
+<%= number_to_currency(@sum += order.product.price * order.quantity,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+
+<div class='col'>
+      <% @sum += order.product.price * order.quantity %>
+      <%# ーーーーーー↑合計金額ーーーーーーー %>
+      <%#= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
     </tr>
     <% end %>
   </tbody>
