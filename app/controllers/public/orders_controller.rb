@@ -29,14 +29,14 @@ class Public::OrdersController < ApplicationController
       @order.name = @order.name
 
     end
-    
+
   end
 
   def create
      @order = Order.new(order_params)
-     @cartitem = current_customer.cartitems
      @order.save
 
+     @cartitem = current_customer.cartitems
      @cartitem.each do |cartitem|
       @order_detail = OrderDetail.new
       @order_detail.quantity = cartitem.quantity
