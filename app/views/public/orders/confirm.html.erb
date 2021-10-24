@@ -10,7 +10,6 @@
     </tr>
   </thead>
   <tbody>
-
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.product.name %></td>
@@ -21,7 +20,6 @@
         <%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
         <% @sum += order.product.price * order.quantity * 1.1 %>
       </td>
-
     </tr>
     <% end %>
   </tbody>
@@ -44,7 +42,11 @@
 
   <%# newページのform_withの値（未記録）をそのまま使う %>
 <h4>支払方法</h4>
-<%= @order.payment_method %>
+<%if @order.payment_method == "gi" %>
+クレジットカード
+<% else %>
+銀行
+<% end %>
 
 <h4>お届け先</h4>
 〒<%= @order.postal_code %> <%= @order.addresses_name %><br />
@@ -63,5 +65,3 @@
   <%= f.submit"注文を確定する", class: "btn btn-success" %>
   <% end %>
 </div>
-
-
