@@ -6,7 +6,7 @@
     <div class="text-right">
 <%= link_to "+",new_admin_product_path,class:"btn btn-primary rounded-circle p-0",style:"width:2rem;height:2rem;" %>
 
- </div>  
+ </div>
 </div>
   <table class="table table-hover m-5">
     <thead>
@@ -24,14 +24,16 @@
         <th scope="row"><%= product.id %></th>
         <td><%= link_to product.name,admin_product_path(product) %></td>
         <td><%= number_to_currency(product.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+
         <td><%= product.genre.name %></td>
         <%#=ジャンルが表示できない %>
+>>
         <% if product.is_sale == true %>
         <td>販売中</td>
          <% else %>
         <td>販売停止</td>
         <% end %>
-  
+
       </tr>
     </tbody>
     <% end %>

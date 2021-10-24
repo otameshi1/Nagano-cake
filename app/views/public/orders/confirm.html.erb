@@ -10,7 +10,6 @@
     </tr>
   </thead>
   <tbody>
-
     <% @orders.each do |order| %>
     <tr>
       <td><%= order.product.name %></td>
@@ -21,7 +20,6 @@
         <%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
         <% @sum += order.product.price * order.quantity * 1.1 %>
       </td>
-
     </tr>
     <% end %>
   </tbody>
@@ -33,12 +31,10 @@
     <td>800</td>
   </tr>
   <tr>
-  <%# 上記tableの小計欄にsumをたして商品合計で@sumを表示することで合計金額とする。 %>
     <td>商品合計</td>
     <td><%= number_to_currency(@sum, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
   </tr>
   <tr>
-    <%# @sumと送料をたした金額もしくは新しい変数(=0)を使用する %>
     <td>請求金額</td>
     <td><%= number_to_currency(@sum + 800, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
     <%# ーーーーーーーー↑請求合計金額ーーーーーーーー %>
@@ -47,7 +43,11 @@
 
   <%# newページのform_withの値（未記録）をそのまま使う %>
 <h4>支払方法</h4>
-<%= @order.payment_method %>
+<%if @order.payment_method == "gi" %>
+クレジットカード
+<% else %>
+銀行
+<% end %>
 
 <h4>お届け先</h4>
 〒<%= @order.postal_code %> <%= @order.addresses_name %><br />
@@ -66,5 +66,3 @@
   <%= f.submit"注文を確定する", class: "btn btn-success" %>
   <% end %>
 </div>
-
-
