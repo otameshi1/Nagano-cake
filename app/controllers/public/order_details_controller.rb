@@ -21,6 +21,7 @@ class Public::OrderDetailsController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     @order_details = OrderDetail.all
 
+
     if params[:making_status] == "0"
       @order_detail.making_status = 0
     elsif params[:making_status] == "1"
