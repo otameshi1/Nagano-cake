@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
+  <div class="col">
     <h3>注文履歴詳細</h3>
-      <table class="table table-borderless">
+      <table class="table table-borderless ">
 　    <tr>
-　      <th>購入者</th>
+　      <th style="width: 20%">購入者</th>
 　      <td><%= link_to @order.name,admin_customer_path(@order.id) %> </td>
 　    </tr>
 　    <tr>
@@ -27,13 +28,14 @@
 　       </td>
 　     </tr>
 　 </table>
+</div>
 <%# -----------上記ページ上段----------------- %>
  <div class="row">
- <div class=col>
+ <div class="col-7 ml-3">
     <table class="table">
-　      <thead>
+　      <thead class="thead-light">
 　        <tr>
-　            <th class="detail-thead">商品名</th>
+　            <th class="detail-thead",>商品名</th>
 　            <th class="detail-thead">単価</th>
 　            <th class="detail-thead">数量</th>
 　            <th class="detail-thead">小計</th>
@@ -62,7 +64,7 @@
 <%# ---------------上記ページ下段左側----------------------- %>
 
   <!--商品値段-->
-　  <div class="col md-2">
+　  <div class="col-3thead-light">
 　    <table class="table table-borderless">
 　      <!--商品合計-->
 　      <% total= 0 %>
@@ -70,23 +72,34 @@
 　      <% total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity) %>
 <% end %>
 　      <tr>
-　        <td><strong>商品合計</strong></td>
+　        <th>商品合計</th>
 　        <td><%= total %>円</td>
 　      </tr>
 　      <tr>
-　        <td><strong>送料</strong></td>
+　        <th>送料</th>
 　        <td>800円</td>
 　      </tr>
 　      <tr>
-　        <td><strong>請求金額</strong></td>
-　        <td><%= total + 800%>円</td>
+　        <th>請求金額</th>
+　        <td><%= total + 800 %>円</td>
 　      </tr>
 　    </table>
 
-　      <% end %>
+　     
 　  </div>
 　</div>
 </div>
+
+
+
+
+
+
+
+
+<%# -------style_tag-------- %>
+
+
 <style>
   .detail-thead {
         text-align:center;
