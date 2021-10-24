@@ -23,7 +23,17 @@ class Public::OrdersController < ApplicationController
       @order.addresses_name = @address.address
       @order.postal_code = @address.postal_code
       @order.name = @address.name
-    elsif params[:order][:address_potion] == "2"
+    elsif params[:ord	case order_detail.making_status
+		 when "製作中"
+				order_detail.order.update(order_status: "製作中")
+		 when "製作完了"
+			if order_detail.order.order_details.all?{|order_detail| order_detail.making_status == "製作完了"}
+				order_detail.order.update(order_status: "発送準備中")
+			end
+		end
+		redirect_to admins_order_path(order_detail.order.id)
+	end
+er][:address_potion] == "2"
       @order.addresses_name = @order.addresses_name
       @order.postal_code = @order.postal_code
       @order.name = @order.name
