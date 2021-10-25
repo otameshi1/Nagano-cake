@@ -1,39 +1,58 @@
-<h1>注文情報入力</h1>
-<%= form_with model:@order, url: orders_confirm_path, local:true do |f| %>
-  <h2>支払い方法</h2>
-  <%= f.radio_button :payment_method, "クレジットカード" %>
-  <%= f.label :クレジットカード %><br />
-  <%= f.radio_button :payment_method, "銀行振込" %>
-  <%= f.label :銀行振込 %>
 
-  <h2>お届け先</h2>
-  <div>
-    <%= f.radio_button :address_option, "0" %>ご自身の住所<br />
-      〒<%= @customer.postal_code %>
-      <%= @customer.address %><br />
-      <%= @customer.full_name %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1 class="index">注文情報入力</h1>
+      <%= form_with model:@order, url: orders_confirm_path, local:true do |f| %>
+        <h2 class="sub">支払い方法</h2>
+        <%= f.radio_button :payment_method, "クレジットカード" %>
+        <%= f.label :クレジットカード %><br />
+        <%= f.radio_button :payment_method, "銀行振込" %>
+        <%= f.label :銀行振込 %>
+      
+        <h2 class="sub">お届け先</h2>
+        <div>
+          <%= f.radio_button :address_option, "0" %>ご自身の住所<br />
+            〒<%= @customer.postal_code %>
+            <%= @customer.address %><br />
+            <%= @customer.full_name %>
+        </div>
+        <%# DBの値からプルダウンメニューを作成する方法を参照 %>
+        <div>
+          <%= f.radio_button :address_option, "1" %>登録済住所から選択<br />
+          <%= f.collection_select(:addresses_id, current_customer.addresses, :id, :full_address)  %>
+        </div>
+        <div>
+          <%= f.radio_button :addresses_option, "2" %>新しいお届け先 <br />
+            <p>
+              郵便番号(ハイフンなし)
+              <%= f.text_field :postal_code, placeholder: "0000000" %>
+            </p>
+            <p>
+              住所
+              <%= f.text_field :addresses_name, placeholder: "東京都渋谷区代々木神園町0-0" %>
+            </p>
+            <p>
+              宛名
+              <%= f.text_field :name, placeholder: "令和道子" %>
+            </p>
+        </div>
+        <div class="icon2"><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></div>
+      <% end %>
+    </div>
   </div>
-  <%# DBの値からプルダウンメニューを作成する方法を参照 %>
-  <div>
-    <%= f.radio_button :address_option, "1" %>登録済住所から選択<br />
-    <%= f.collection_select(:addresses_id, current_customer.addresses, :id, :full_address) %>
-  </div>
-  <div>
-    <%= f.radio_button :addresses_option, "2" %>新しいお届け先 <br />
-      <p>
-        郵便番号(ハイフンなし)
-        <%= f.text_field :postal_code, placeholder: "0000000" %>
-      </p>
-      <p>
-        住所
-        <%= f.text_field :addresses_name, placeholder: "東京都渋谷区代々木神園町0-0" %>
-      </p>
-      <p>
-        宛名
-        <%= f.text_field :name, placeholder: "令和道子" %>
-      </p>
-  </div>
+</div>
 
-  <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+<style>
+  .index {
+    margin-bottom:50px ;
+  }
 
-<% end %>
+  .sub {
+    margin: 30px 0;
+  }
+
+  .icon2{
+    margin-top: 50px;
+  }
+</style>
