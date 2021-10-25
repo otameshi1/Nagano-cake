@@ -1,72 +1,75 @@
-<h1>注文情報確認画面</h1>
-<% @sum = 0 %>
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.product.name %></td>
-      <td><%= number_to_currency(order.product.price * 1.1,unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
-      </td>
-      <td><%= order.quantity %></td>
-      <td>
+<div class="container">
+  <h1>注文情報確認画面</h1>
+  <% @sum = 0 %>
 
-<%= number_to_currency(@sum += order.product.price * order.quantity,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.product.name %></td>
+            <td><%= number_to_currency(order.product.price * 1.1,unit: "", format: "%n %u",strip_insignificant_zeros:true) %>
+            </td>
+            <td><%= order.quantity %></td>
+            <td><%= number_to_currency(order.product.price * 1.1 * order.quantity,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+            <% @sum += order.product.price * order.quantity * 1.1 %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<div class='col'>
-      <% @sum += order.product.price * order.quantity %>
-      <%# ーーーーーー↑合計金額ーーーーーーー %>
-      <%#= number_to_currency(products.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%>
-    </tr>
+    <div class="col-md-3">
+      <table class="table table-bordered">
+        <tr>
+          <td>送料</td>
+          <td>800</td>
+        </tr>
+        <tr>
+          <td>商品合計</td>
+          <td><%= number_to_currency(@sum, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+        </tr>
+        <tr>
+          <td>請求金額</td>
+          <td><%= number_to_currency(@sum + 800, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>支払方法</h4>
+    <%= @order.payment_method %>
+  </div>
+
+  <div class="row">
+    <h4>お届け先</h4>
+    〒<%= @order.postal_code %>  <%= @order.addresses_name %><br />
+    <%= @order.name %>
+  </div>
+
+  <div>
+    <%= form_with model:@order, url: orders_path, method: :post, local:true do |f| %>
+    <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+    <%= f.hidden_field :addresses_name, :value => @order.addresses_name %>
+    <%= f.hidden_field :postage, :value => 800 %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :total_payment, :value => @sum + 800 %>
+    <%= f.hidden_field :order_status, :value =>  0 %>
+    <%= f.hidden_field :name, :value => @order.name %>
+    <div class="center">
+      <%= f.submit"注文を確定する", class: "btn btn-success" %>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<table>
-  <tr>
-    <td>送料</td>
-    <td>800</td>
-  </tr>
-  <tr>
-    <td>商品合計</td>
-    <td><%= number_to_currency(@sum, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
-  </tr>
-  <tr>
-    <td>請求金額</td>
-    <td><%= number_to_currency(@sum + 800, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
-    <%# ーーーーーーーー↑請求合計金額ーーーーーーーー %>
-  </tr>
-</table>
-
-  <%# newページのform_withの値（未記録）をそのまま使う %>
-<h4>支払方法</h4>
-<%if @order.payment_method == "gi" %>
-クレジットカード
-<% else %>
-銀行
-<% end %>
-
-<h4>お届け先</h4>
-〒<%= @order.postal_code %> <%= @order.addresses_name %><br />
-<%= @order.name %>
-
-<div>
-<%= form_with model:@order, url: orders_path, method: :post, local:true do |f| %>
-<%= f.hidden_field :payment_method, :value => @order.payment_method %>
-<%= f.hidden_field :postal_code, :value => @order.postal_code %>
-<%= f.hidden_field :addresses_name, :value => @order.addresses_name %>
-<%= f.hidden_field :postage, :value => 800 %>
-<%= f.hidden_field :customer_id, :value => current_customer.id %>
-<%= f.hidden_field :total_payment, :value => @sum + 800 %>
-<%= f.hidden_field :order_status, :value =>  0 %>
-<%= f.hidden_field :name, :value => @order.name %>
-  <%= f.submit"注文を確定する", class: "btn btn-success" %>
-  <% end %>
+  </div>
 </div>
