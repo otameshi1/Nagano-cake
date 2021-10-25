@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row mt-5 ">
         <div class="col-xl-3">
             <table class="table table-bordered genre-table">
                 <thead>
@@ -15,7 +15,7 @@
             </table>
         </div>
         <div class="col-xl-9">
-            <h3>商品一覧<span class="small">(全<%= @products.count %>件)</span></h3>
+            <h3 class="mb-5">商品一覧<span class="small">(全<%= @products.count %>件)</span></h3>
             <div class="rrtt">
                 <% @products.each do |product| %>
                     <%= link_to product_path(product.id) do %>

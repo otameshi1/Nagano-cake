@@ -15,18 +15,20 @@
         </table>
         </div>
         <div class="col-xl-9">
-            <div class="text-center">
-                 <h3>ようこそ、ながのCAKEへ！</h3></br>
-                 <p>このサイトは、ケーキ販売にECサイトになります。</br>
-                会員でない方も商品の閲覧はできますが、</br>
-                購入には会員登録が必要になります。
-                </p>
+            <div class="w-autoz h-50 text-center pt-5">
+                <div class="top-im">
+                    <h3>ようこそ、ながのCAKEへ！</h3></br>
+                    <p>このサイトは、ケーキ販売にECサイトになります。</br>
+                    会員でない方も商品の閲覧はできますが、</br>
+                    購入には会員登録が必要になります。
+                    </p>
+                    <% if flash[:notice] %>
+                        <%= flash[:notice] %>
+                    <% end %>
+                </div>
             </div>
-            <div>
+            <div class="mt-5">
                 <h1>新着商品</h1>
-                 <% if flash[:notice] %>
-                    <%= flash[:notice] %>
-                <% end %>
                 <div class="rrtt">
                     <% @products.each do |product| %>
                         <%= link_to product_path(product.id) do %>
@@ -59,5 +61,10 @@
 
 .price {
     margin-bottom: 50px;
+}
+.background-image {
+    background-image: image-url("forest.jpeg");
+    background: red;
+    height: 350px;
 }
 </style>
