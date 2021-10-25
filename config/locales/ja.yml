@@ -43,5 +43,5 @@ ja:
         pay_waiting: "入金待ち"
         pay_up: "入金確認"
         making: "製作中"
-        Ready_ship: "発送準備中"
+        ready_ship: "発送準備中"
         shipped: "発送済み"
