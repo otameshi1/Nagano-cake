@@ -61,6 +61,7 @@
   <tr>
     <td><%= order.product.name %></td>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <td><%= order.product.price * 1.1 %></td>
     <td><%= order.quantity %></td>
     <td><%= order.product.price * order.quantity * 1.1 %></td>
@@ -69,6 +70,11 @@
     <td><%= order.quantity %></td>
     <td><%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
 >>>>>>> 56500efe0a3d6fdd97c699d3a139b2a914fc4c5f
+=======
+    <td><%= number_to_currency(order.product.price * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+    <td><%= order.quantity %></td>
+    <td><%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+>>>>>>> 7984dcd61712b7a9ab9588bbb2504c568b17411a
     <% @sum += order.product.price * order.quantity * 1.1 %>
   </tr>
   <% end %>

@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
+  <div class="col">
     <h3>注文履歴詳細</h3>
-      <table class="table table-borderless">
+      <table class="table table-borderless ">
 　    <tr>
 　      <th>購入者</th>
   <div class="col">
@@ -32,9 +33,11 @@
 　       </td>
 　     </tr>
 　 </table>
+
+</div>
 <%# -----------上記ページ上段----------------- %>
  <div class="row">
- <div class=col>
+ <div class="col-7 ml-3">
     <table class="table">
 　      <thead>
 </div>
@@ -73,6 +76,7 @@
 <%# ---------------上記ページ下段左側----------------------- %>
 
   <!--商品値段-->
+
 　  <div class="col md-2">
 　  <div class="col-3thead-light">
 　    <table class="table table-borderless">
@@ -82,21 +86,19 @@
 　      <% total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity) %>
 <% end %>
 　      <tr>
-　        <td><strong>商品合計</strong></td>
+
+　        <th>商品合計</th>
 　        <td><%= total %>円</td>
 　      </tr>
 　      <tr>
-　        <td>送料</td>
-　        <td><%= 800円%></td>
-　        <td><strong>送料</strong></td>
+　        <th>送料</th>
 　        <td>800円</td>
 　      </tr>
 　      <tr>
-　        <td><strong>請求金額</strong></td>
-　        <td><%= total + 800%>円</td>
+　        <th>請求金額</th>
+　        <td><%= total + 800 %>円</td>
 　      </tr>
 　    </table>
-
 　      <% end %>
 　        <th>商品合計</th>
 　        <td><%= total %>円</td>
