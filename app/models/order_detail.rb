@@ -1,5 +1,5 @@
 class OrderDetail < ApplicationRecord
-    enum making_statuses: {
+    enum making_status: {
         入金待ち: 0,
         入金確認: 1,
         製作中: 2,

@@ -1,10 +1,12 @@
 <h1>注文情報入力</h1>
 <%= form_with model:@order, url: orders_confirm_path, local:true do |f| %>
   <h2>支払い方法</h2>
+
   <%= f.radio_button :payment_method, "クレジットカード" %>
-  クレジットカード<br />
+  <%= f.label :クレジットカード %><br />
   <%= f.radio_button :payment_method, "銀行振込" %>
-  銀行振込
+  <%= f.label :銀行振込 %>
+
 
   <h2>お届け先</h2>
   <div>
@@ -16,7 +18,7 @@
   <%# DBの値からプルダウンメニューを作成する方法を参照 %>
   <div>
     <%= f.radio_button :address_option, "1" %>登録済住所から選択<br />
-    <%= f.collection_select(:addresses_id, Address.all, :id, :full_address) %>
+    <%= f.collection_select(:addresses_id, current_customer.addresses, :id, :full_address) %>
   </div>
   <div>
     <%= f.radio_button :addresses_option, "2" %>新しいお届け先 <br />

@@ -8,10 +8,10 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.cartitems
     @order = Order.new(order_params)
 
-    if params[:order][:payment_method] == "0"
-      @order.payment_method = 0
-    elsif params[:order][:payment_method] = "1"
-      @order.payment_method = 1
+    if params[:order][:payment_method] == "クレジットカード"
+      @order.payment_method = "クレジットカード"
+    elsif params[:order][:payment_method] == "銀行振込"
+      @order.payment_method = "銀行振込"
     end
 
     if params[:order][:address_option] == "0"
@@ -29,14 +29,14 @@ class Public::OrdersController < ApplicationController
       @order.name = @order.name
 
     end
-    
+
   end
 
   def create
      @order = Order.new(order_params)
-     @cartitem = current_customer.cartitems
      @order.save
 
+     @cartitem = current_customer.cartitems
      @cartitem.each do |cartitem|
       @order_detail = OrderDetail.new
       @order_detail.quantity = cartitem.quantity
