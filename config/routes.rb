@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+
+  namespace :admin do
+    get 'searches/searches'
+  end
   # ーーーーーーーーーー管理者側ーーーーーーーーーーーー
   devise_for :admin, controllers: {
   sessions: 'admin/sessions'
@@ -7,10 +11,12 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get 'admin/searches' => 'searches#searches'
     resources :customers,only: [:index, :show, :edit, :update]
     resources :order_details,only: [:index, :show, :update]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
     resources :genres,only: [:edit, :create, :index, :create, :update]
+    resources :orders,only: [:update]
   end
 
 

@@ -22,4 +22,5 @@ module Naganokaki
   end
 
  
+  
 end
