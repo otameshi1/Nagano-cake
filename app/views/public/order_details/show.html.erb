@@ -6,23 +6,23 @@
   <tbody>
     <tr>
       <td>注文日</td>
-      <td><%= @order_detail.created_at %></td>
+      <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
     </tr>
     <tr>
       <td>配送先</td>
       <td>
-       〒<%= @order_detail.order.postal_code %><br />
-       <%= @order_detail.order.addresses_name %><br />
-       <%= @order_detail.order.name %>
+       〒<%= @order.postal_code %><br />
+       <%= @order.addresses_name %><br />
+       <%= @order.name %>
       </td>
     </tr>
     <tr>
       <td>支払方法</td>
-      <td><%= @order_detail.order.payment_method %></td>
+      <td><%= @order.payment_method %></td>
     </tr>
     <tr>
       <td>ステータス</td>
-      <td><%= @order_detail.order.order_status %></td>
+      <td><%= @order.order_status %></td>
     </tr>
   </tbody>
 </table>
@@ -33,14 +33,15 @@
   <tbody>
     <tr>
       <td>商品合計</td>
+      <td><%= @order.total_payment - 800 %></td>
     </tr>
     <tr>
-      <td>配送先</td>
+      <td>配送料</td>
       <td><%= 800 %></td>
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td><%= @sum + 800 %></td>
+      <td><%= @order.total_payment %></td>
     </tr>
   </tbody>
 </table>
@@ -56,13 +57,13 @@
     </tr>
   </thead>
   <tbody>
-  <% @order_details.each do |detail| %>
+  <% @order_details.each do |order| %>
   <tr>
-    <td><%= detail.product.name %></td>
-    <td><%= detail.product.price * 1.1 %></td>
-    <td><%= detail.quantity %></td>
-    <td><%= detail.product.price * detail.quantity * 1.1 %></td>
-    <% @sum += detail.product.price * detail.quantity * 1.1 %>
+    <td><%= order.product.name %></td>
+    <td><%= number_to_currency(order.product.price * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+    <td><%= order.quantity %></td>
+    <td><%= number_to_currency(order.product.price * order.quantity * 1.1, unit: "", format: "%n %u",strip_insignificant_zeros:true) %></td>
+    <% @sum += order.product.price * order.quantity * 1.1 %>
   </tr>
   <% end %>
   </tbody>
