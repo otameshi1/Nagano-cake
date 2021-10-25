@@ -20,12 +20,17 @@
         <td><%= @order.payment_method %></td>
 　     <tr>
 　       <th>注文ステータス</th>
-　       <td>
-          <%= form_with model: @order, url: admin_order_detail_path, method: :patch, local: true do |f| %>
-　        <%#= f.select :status, Order.order_status.keys.to_a %>
-　        <%= f.submit '更新', class: "btn btn-success btn-sm" %>
-　        <% end %>
-　       </td>
+
+<%# ーーーーーーー注文ステータスーーーーーーーーーーーーーーー %>
+        <td>
+          <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
+            <%= f.select :order_status,Order.order_statuses_i18n.invert %>
+            <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+          <% end %>
+        </td>
+<%# ーーーーどこでUpdate保存すんの？Orderコントローラーない？detailコントローラーの中でorderのメソッド創設してストロングパラメータ？ーーーーーーーーーーーーーーーーーーー %>
+
+
 　     </tr>
 　 </table>
 </div>
@@ -49,12 +54,16 @@
 　            <td><%= (order_detail.product.price ).round(0) %></td>
 　            <td><%= order_detail.quantity %></td>
 　            <td><%= (order_detail.purchase_price ) %></td>
-　            <td>
-　                <%#= form_with model: @order_detail, url: admin_order_ditail_paths(@order) do |f| %>
-　                  <%#= f.select :status, OrderDetail.making_status.keys.to_a %>
-　                  <%#=f.submit "更新", class: "btn btn-success btn-sm" %>
-　         <%#= end %>
-　            </td>
+
+
+<%# ーーーーー制作ステータスーーーーーー %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail),method: :patch, local:true do |f|%>
+          <td> <%= f.select :making_status,OrderDetail.making_statuses_i18n.invert %>
+          <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+          </td>
+　         <% end %>
+<%# ーーーーーー！！データは保存されているが、セレクトフォームに適用されない！！ーーーーーーー %>
+　
           </tr>
         </tbody>
 　        <% end %>
@@ -64,6 +73,7 @@
 <%# ---------------上記ページ下段左側----------------------- %>
 
   <!--商品値段-->
+
 　  <div class="col-3thead-light">
 　    <table class="table table-borderless">
 　      <!--商品合計-->
@@ -72,6 +82,7 @@
 　      <% total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity) %>
 <% end %>
 　      <tr>
+
 　        <th>商品合計</th>
 　        <td><%= total %>円</td>
 　      </tr>
