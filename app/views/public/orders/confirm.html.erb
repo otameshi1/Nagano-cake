@@ -43,14 +43,8 @@
         </tr>
       </table>
 
-        <%# newページのform_withの値（未記録）をそのまま使う %>
       <h4 class="sub">支払方法</h4>
-      <%if @order.payment_method == "gi" %>
-      クレジットカード
-      <% else %>
-      銀行
-      <% end %>
-
+      <%= @order.payment_method %>
       <h4 class="sub">お届け先</h4>
       〒<%= @order.postal_code %> <%= @order.addresses_name %><br />
       <%= @order.name %>
