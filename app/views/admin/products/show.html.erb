@@ -4,19 +4,19 @@
     
     
     <div class="col">
-      <div class="bg-info">
-        <h4>商品詳細</h4>
-      </div>
+        <h4 class="title-3">商品詳細</h4>
      <%= attachment_image_tag @product, :image,size:'450x300', fallback:"no_image.png" %>
     </div>
     
     
       <div class="col mt-5">
-        <table class="new-form-table text-align">
-          <tbody>
+        <table class="table new-form-table text-align">
+          <tbody >
             <tr>
               <th>商品名</th>
               <td><%= @product.name %></td>
+              <td></td>
+               <td></td>
             </tr>
               <tr>
               <th>商品説明</th>

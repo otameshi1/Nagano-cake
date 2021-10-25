@@ -1,47 +1,46 @@
 <div class="container">
      <div class="row justify-content-center">
       <div class="col-mt-5 ">
-          <h4>商品編集</h4>
+          <h4 class="title">商品編集</h4>
 
           <%= form_with model:@product,url:admin_product_path,method: :PATCH,local:true do |f| %>
               <table class="table table-borderless">
                 <tbody>
                   <tr>
-                    <th>商品画像</th>
+                    <th class="width40">商品画像</th>
                     <td><%=  f.attachment_field :image %></td>
                   </tr>
 
                   <tr>
                     <th>商品名</th>
-                    <td><%= f.text_field :name,class: "form-control ml-5" %></td>
+                    <td><%= f.text_field :name%></td>
                   </tr>
 
                   <tr>
                     <th>商品説明</th>
-                    <td><%= f.text_area :introduction,class: "form-control ml-5" %></td>
+                    <td><%= f.text_area :introduction%></td>
                   </tr>
 
                    <tr>
-                    <th class:'control-label'>ジャンル</th>
-                    <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } ,include_blank: "--選択して下さい--",:class => "form-control ml-5" %></td>
+                    <th>ジャンル</th>
+                    <td><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } ,include_blank: "--選択して下さい--" %></td>
                   </tr>
                    <tr>
                     <th>価格</th>
-                    <td><%= f.number_field :price,class: "form-control ml-5" %></td>
+                    <td><%= f.number_field :price %></td>
                   </tr>
                   <tr>
                     <th>販売ステータス</th>
-                      <td class:'ml-5'>
+                      <td class:'form_edit'>
                       <%= f.label :販売中 %>
                       <%= f.radio_button :is_sale,:true %>
                       <%= f.label :販売停止 %>
                       <%= f.radio_button :is_sale,:false %>
                       </td>
                   </tr>
-
                  </tbody>
                 </table>
-                  <div class="text-right">
+                  <div class="text-center">
                     <%= f.submit "編集" ,class: "btn btn-primary text-center" %>
                  </div>
               </div>
