@@ -23,7 +23,7 @@
 
 <%# ーーーーーーー注文ステータスーーーーーーーーーーーーーーー %>
         <td>
-          <%= form_with model: @order, url: admin_order_detail_path(@order), method: :patch, local: true do |f| %>
+          <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
             <%= f.select :order_status,Order.order_statuses_i18n.invert %>
             <%= f.submit '更新', class: "btn btn-success btn-sm" %>
           <% end %>
@@ -54,13 +54,13 @@
 　            <td><%= (order_detail.product.price ).round(0) %></td>
 　            <td><%= order_detail.quantity %></td>
 　            <td><%= (order_detail.purchase_price ) %></td>
-　            
+
 
 <%# ーーーーー制作ステータスーーーーーー %>
-              <%= form_with model: @order_detail, url: admin_order_detail_path(order_detail.id),method: :patch, local: true do |f|%>
-              <td> <%= f.select :making_status,OrderDetail.making_statuses_i18n.invert %>
-              <%= f.submit '更新', class: "btn btn-success btn-sm" %>
-              <%= order_detail.making_status %></td>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail),method: :patch, local:true do |f|%>
+          <td> <%= f.select :making_status,OrderDetail.making_statuses_i18n.invert %>
+          <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+          </td>
 　         <% end %>
 <%# ーーーーーー！！データは保存されているが、セレクトフォームに適用されない！！ーーーーーーー %>
 　

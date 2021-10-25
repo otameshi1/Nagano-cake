@@ -15,9 +15,6 @@ class Admin::OrderDetailsController < ApplicationController
         @order = Order.find(params[:id])
         @order_detail = @order.order_details
         @order_detail.update(order_update_params)
-        
-        binding.pry
-        
         redirect_to admin_order_details_path
     end
 
