@@ -9,22 +9,16 @@ class Admin::OrderDetailsController < ApplicationController
     def show
         @order = Order.find(params[:id])
 		@order_detail = @order.order_details
-         # @product = Product.find(params[:id])
     end
     
     def update
-        detail = OrderDetail.find(params[:id])
-        detail = OrderDetail.order
-        detail.making_status_auto_update
-        redirect_to admins_order_details_path(@order)
         @order = Order.find(params[:id])
-        @order.update(order_update_params)
-        @order.order_detail_status_auto_update
-        redirect_to admins_order_details
+        @order_detail = @order.order_details
+        @order_detail.update(order_update_params)
+        redirect_to admin_order_details_path
     end
-    
+
     private
-    
      def order_update_params
          params.require(:order_detail).permit(:making_status)
      end
