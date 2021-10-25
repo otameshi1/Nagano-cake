@@ -2,7 +2,7 @@ class Public::CartsController < ApplicationController
 
   def new
    @carts = current_customer.cartitems
- 
+
   end
   def create
     @cart = Cartitem.new(cart_params)
