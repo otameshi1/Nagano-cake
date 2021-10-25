@@ -1,7 +1,6 @@
 class Public::CartsController < ApplicationController
 
   def new
-
    @carts = current_customer.cartitems
   #@carts = Cartitem.all
   # @carts.customer_id = current_customer.id
