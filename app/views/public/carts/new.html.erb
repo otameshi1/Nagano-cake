@@ -21,8 +21,10 @@
               <% product_tax = cart.product.price * 1.1 %>
               <td><%= number_to_currency(product_tax,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
               <%= form_with model:cart, url: cart_path(cart.id), local:true do |f| %>
-                <td><%= f.number_field :quantity %></td>
-                <td><%= f.submit "変更", class: "btn btn-success" %></td>
+                <td>
+                  <%= f.number_field :quantity %>
+                  <%= f.submit "変更", class: "btn btn-success" %>
+                </td>
               <% end %>
               <% subtotal = cart.product.price * 1.1 * cart.quantity %>
               <td><%= number_to_currency(subtotal,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
