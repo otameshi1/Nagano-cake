@@ -65,7 +65,7 @@
     <%= f.hidden_field :postage, :value => 800 %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%= f.hidden_field :total_payment, :value => @sum + 800 %>
-    <%= f.hidden_field :order_status, :value =>  0 %>
+    <%= f.hidden_field :order_status, :value => "pay_waiting" %>
     <%= f.hidden_field :name, :value => @order.name %>
     <div class="center">
       <%= f.submit"注文を確定する", class: "btn btn-success" %>
