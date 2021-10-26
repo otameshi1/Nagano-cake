@@ -14,31 +14,36 @@
             </tbody>
         </table>
         </div>
+
+        <%# ---------------toppage--------------------- %>
         <div class="col-xl-9">
             <div class="w-autoz h-50 text-center pt-5">
-                <div class="top-img">
-                    <h3>ようこそ、ながのCAKEへ！</h3></br>
-                    <p>このサイトは、ケーキ販売にECサイトになります。</br>
-                    会員でない方も商品の閲覧はできますが、</br>
-                    購入には会員登録が必要になります。
-                    </p>
-                    <% if flash[:notice] %>
-                        <%= flash[:notice] %>
-                    <% end %>
+            <div class='tops'>
+                        <h3>ようこそ、ながのCAKEへ！</h3>
+                        <p>このサイトは、ケーキ販売にECサイトになります。</p>
+                        <p>会員でない方も商品の閲覧はできますが、</p>
+                        <p>購入には会員登録が必要になります。</p>
+                    <ul class="slick01">
+                        <li  class="slick1_item"><img class="slick1_image"><%= image_tag "cake1.jpeg" %></li>
+                        <li  class="slick1_item"><img class="slick1_image"><%= image_tag "cake2.jpeg" %></li>
+                        <li class="slick1_item"><img class="slick1_image"><%= image_tag "cake3.jpeg" %></li>
+                     </ul>
                 </div>
             </div>
-            <div class="mt-5">
-                <h1>新着商品</h1>
-                <div class="rrtt">
-                    <% @products.each do |product| %>
-                        <%= link_to product_path(product.id) do %>
-                            <div class="image"><%= attachment_image_tag product, :image, size: "200x200", fallback:"no_image.png" %></div>
-                            <div class="name"><%= product.name %></div>
-                            <div class="price">¥<%= number_to_currency(product.price,:precision =>0, :format=>"%n%u", :unit=>"円") %>（税抜き）</div>
+            <div class="new_product">
+                <div class="mt-5">
+                    <h1>新着商品</h1>
+                    <div class="rrtt">
+                        <% @products.each do |product| %>
+                            <%= link_to product_path(product.id) do %>
+                                <div class="image"><%= attachment_image_tag product, :image, size: "200x200", fallback:"no_image.png" %></div>
+                                <div class="name"><%= product.name %></div>
+                                <div class="price">¥<%= number_to_currency(product.price,:precision =>0, :format=>"%n%u", :unit=>"円") %>（税抜き）</div>
+                            <% end %>
                         <% end %>
-                    <% end %>
+                    </div>
+                    <%= link_to "全ての商品を見る>", products_path %>
                 </div>
-                <%= link_to "全ての商品を見る>", products_path %>
             </div>
         </div>
     </div>
@@ -61,6 +66,10 @@
 
 .price {
     margin-bottom: 50px;
+}
+
+.new_product {
+    margin-top :350px
 }
 
 </style>

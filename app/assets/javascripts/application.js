@@ -17,3 +17,13 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$(function() {
+  $('.slick01').slick({
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      variableWidth:true
+      
+  });
+});
