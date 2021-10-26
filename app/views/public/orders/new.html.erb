@@ -3,13 +3,13 @@
     <div class="col">
       <h1 class="index">注文情報入力</h1>
       <%= form_with model:@order, url: orders_confirm_path, local:true do |f| %>
-        <h2 class="sub">支払い方法</h2>
+        <h2 class="sub">支払い方法 <i class="fas fa-cash-register"></i></h2>
         <%= f.radio_button :payment_method, "クレジットカード" %>
-        <%= f.label :クレジットカード %><br />
+        <%= f.label :クレジットカード %> <i class="fas fa-credit-card"></i><br />
         <%= f.radio_button :payment_method, "銀行振込" %>
-        <%= f.label :銀行振込 %>
-      
-        <h2 class="sub">お届け先</h2>
+        <%= f.label :銀行振込 %> <i class="fas fa-piggy-bank"></i>
+
+        <h2 class="sub">お届け先 <i class="fas fa-truck"></i></h2>
         <div>
           <%= f.radio_button :address_option, "0" %>ご自身の住所<br />
             〒<%= @customer.postal_code %>
@@ -43,6 +43,11 @@
 </div>
 
 <style>
+
+  /* * {
+    text-align: center;
+  } */
+
   .index {
     margin-bottom:50px ;
   }
