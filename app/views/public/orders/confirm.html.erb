@@ -15,7 +15,7 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><%= order.product.name %></td>
+            <td><%= attachment_image_tag order.product, :image, size: "100x80" %><%= order.product.name %></td>
             <td><%= number_to_currency(order.product.price * 1.1, :precision =>0, :unit=>"円", format: "%n %u",strip_insignificant_zeros:true) %>
             </td>
             <td><%= order.quantity %></td>
@@ -43,9 +43,9 @@
         </tr>
       </table>
 
-      <h4 class="sub">支払方法</h4>
+      <h4 class="sub">支払方法 <i class="fas fa-cash-register"></i></h4>
       <%= @order.payment_method %>
-      <h4 class="sub">お届け先</h4>
+      <h4 class="sub">お届け先 <i class="fas fa-truck"></i></h4>
       〒<%= @order.postal_code %> <%= @order.addresses_name %><br />
       <%= @order.name %>
 
