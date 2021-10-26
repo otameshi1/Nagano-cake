@@ -17,7 +17,6 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
 header.btn1 {
   border-radius: 30px;
 }
@@ -25,4 +24,69 @@ header.btn1 {
 header.link {
   text-decoration: none;
   color: black;
+}
+
+// -------------homes/top-css----------------------
+.tops {
+  width: 100%;
+  position: absolute;
+}
+.tops h3{
+  font-family: comic sans ms;
+  font-size: 60px;
+}
+
+.tops p {
+  z-index: 110;
+  top: 25%;
+  left: 50%;
+  margin:0 auto;
+  // -ms-transform: translate(-50%,-50%);
+  // -webkit-transform: translate(-50%,-50%);
+  // transform: translate(-50%,-50%);
+  opacity: 100%;
+  color: black;
+  font-size: 25px;
+  padding: 10px;
+  line-height: 20px
+  }
+
+.slick1_item {
+  width: auto; //ポイント1
+  height: 0 auto;
+  max-height: 400px; //ポイント2
+  min-height: auto; //ポイント2
+  padding: 0px 60px;
+  text-align: center;
+  box-sizing: border-box;
+  object-fit: cover;
+  background-size: contain;
+}
+
+.slick1-image{
+  object-fit: cover;
+  width: 1000%; 
+  height: 100%;
+}
+
+.slick-dots {
+  li {
+    font-size: 20px !important;
+    button:before {
+      content: "○" !important;
+      font-size: 14px !important;
+      color: rgb(60, 60, 60) !important;
+    }
+  }
+}
+
+.slick-slide {
+  position: relative;
+}
+
+.slick01 {
+  margin: 0 auto;
+}
+.slick01 img{
+  width: 100%;
 }
