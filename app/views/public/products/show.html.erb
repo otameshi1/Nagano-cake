@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4">
+      <table class="table table-bordered genre-table">
+        <thead>
+            <td>ジャンル検索</td>
+        </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match") %></td>
+            </tr>
+          <% end %>
+          </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <%= attachment_image_tag @product, :image, size: "200x200", fallback:"no_image.png" %>
+    </div>
+    <div class="col-4">
+      <h4 class="text-danger"><%= flash[:notice] %></h4>
+      <h1 class="mt-4"><%= @product.name %></h1>
+      <h4 class="mt-5"><%= @product.introduction %></h4>
+      <% product_tax = @product.price * 1.1 %>
+      <h3><%= number_to_currency(product_tax,:precision =>0, :format=>"%n%u", :unit=>"円") %></h3>
+      <%= form_with(model: [@product, @cart], url: carts_path, method: :post, local:true) do |f| %>
+        <%= f.number_field :quantity, max: 20, class: ""%>
+        <%= f.hidden_field :product_id, :value => @product.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

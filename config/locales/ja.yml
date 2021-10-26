@@ -1,0 +1,47 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        confirmation_sent_at: パスワード確認送信時刻
+        confirmation_token: パスワード確認用トークン
+        confirmed_at: パスワード確認時刻
+        created_at: 作成日
+        current_password: 現在のパスワード
+        current_sign_in_at: 現在のログイン時刻
+        current_sign_in_ip: 現在のログインIPアドレス
+        email: Eメール
+        encrypted_password: 暗号化パスワード
+        failed_attempts: 失敗したログイン試行回数
+        last_sign_in_at: 最終ログイン時刻
+        last_sign_in_ip: 最終ログインIPアドレス
+        locked_at: ロック時刻
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        remember_created_at: ログイン記憶時刻
+        remember_me: ログインを記憶する
+        reset_password_sent_at: パスワードリセット送信時刻
+        reset_password_token: パスワードリセット用トークン
+        sign_in_count: ログイン回数
+        unconfirmed_email: 未確認Eメール
+        unlock_token: ロック解除用トークン
+        updated_at: 更新日
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+  enums:
+    order_detail:
+      making_status:
+        unintentional: "着手不可"
+        waiting_product: "制作待ち"
+        in_preparation: "製作中"
+        making_complete: "製作完了"
+    order:
+      order_status:
+        pay_waiting: "入金待ち"
+        pay_up: "入金確認"
+        making: "製作中"
+        ready_ship: "発送準備中"
+        shipped: "発送済み"

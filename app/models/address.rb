@@ -1,8 +1,12 @@
 class Address < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, optional: true
 
-  validates :name, precense: true
-  validates :postal_code, precense: true
-  validates :address, precense: true
+  validates :name, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+
+  def full_address
+    "#{postal_code} #{address} #{name}"
+  end
 
 end

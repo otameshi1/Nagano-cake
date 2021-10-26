@@ -1,32 +1,62 @@
-<h1>会員詳細</h1>
+<div class="container">
+   <h3 class="title-3"><%= @customer.first_name + @customer.last_name %>さんの会員詳細</h3>
+  <div class="row m-3">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
 
-<% @costomer.each do |costomer|>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.first_name + @customer.last_name %></td>
+        </tr>
 
-<p>会員ID</p>
-<%= customer.id %>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.first_name_kana + @customer.last_name_kana %></td>
+        </tr>
 
-<p>氏名</p>
-<%= customer.first_name %>
-<%= customer.last_name %>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.address %></td>
+        </tr>
 
-<p>フリガナ</p>
-<%= customer.first_name_kana %>
-<%= customer.last_name_kana %>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
 
-<p>郵便番号</p>
-<%= customer.postal_code %>
 
-<p>住所</p>
-<%= customer.address %>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
 
-<p>電話番号</p>
-<%= customer.address %>
 
-<p>メールアドレス</p>
-<%= customer.email %>
+        <tr>
+          <th>会員ステータス</th>
+                <!--falseだったら、退会・入会判断-->
+        <% if @customer.is_deleted == false %>
+        　<td>有効</td>
+        <% else %>
+        <td>無効</td>
+        <% end %>
+        </tr>
+        <tr>
+        <th></th>
+        <td><%= link_to "編集する",edit_admin_customer_path(@customer),class:'btn btn-danger m-3' %>
+        <%= link_to "注文一覧を見る", admin_order_detail_path(@customer),class:'btn btn-primary' %></td>
+        </tr>
 
-<p>会員ステータス</p>
-<%= customer.is_deleted %>
+      </tbody>
+    </table> 
+  </div>
+</div>
 
-<% end %>
+
+
+
+
 

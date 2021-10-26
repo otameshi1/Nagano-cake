@@ -1,1 +1,44 @@
 
+<div class="container">
+  <div class="row ">
+     <h4 class="title">商品一覧</h4>
+    <div class="mt ml-auto">
+    <div class="text-right">
+<%= link_to "+",new_admin_product_path,class:"btn btn-primary rounded-circle p-0",style:"width:2rem;height:2rem;" %>
+
+ </div>
+</div>
+  <table class="table table-hover m-5">
+    <thead>
+      <tr>
+        <th scope="col">商品ID</th>
+        <th scope="col">商品名</th>
+        <th scope="col">税抜き価格</th>
+        <th scope="col">ジャンル</th>
+        <th scope="col">ステータス</th>
+      </tr>
+    </thead>
+    <% @product.each do |product|%>
+    <tbody>
+      <tr>
+        <th class='width:40'><%= product.id %></th>
+        <td><%= link_to product.name,admin_product_path(product) %></td>
+        <td><%= number_to_currency(product.price,unit: "", format: "%n %u",strip_insignificant_zeros:true)%></td>
+
+        <td><%= product.genre.name %></td>
+        <%#=ジャンルが表示できない %>
+        <% if product.is_sale == true %>
+        <td>販売中</td>
+         <% else %>
+        <td>販売停止</td>
+        <% end %>
+
+      </tr>
+    </tbody>
+    <% end %>
+
+  </table>
+  </div>
+</div>
+
+<%= paginate @product %>

@@ -1,0 +1,6 @@
+<% if new_produc.errors.any? %>
+  <%= new_produc.errors.count %>件のエラーが発生しました
+  <% new_produc.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>

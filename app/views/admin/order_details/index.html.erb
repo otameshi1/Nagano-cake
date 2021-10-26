@@ -1,1 +1,72 @@
-<h1>注文履歴一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+       <h1 class="itiran">注文画面一覧</h1>
+       <h4>＼<span class="blank">下に表示されていますのでご確認ください⬇</span>／</h4>
+       <div class=hitomitotakashi>👫</div>
+       <table class="table table-bordered">
+        <thead>
+            <tr>
+            　<th class="detail-thead">購入日時</th>
+            　<th class="detail-thead">購入者</th>
+            　<th class="detail-thead">注文個数</th>
+            　<th class="detail-thead">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @orders.each do |order| %>
+              <tr>
+                  <td class="detail-tbody"><%=link_to order.updated_at.strftime("%Y/%m/%d %H:%M"),admin_order_detail_path(order.id) %></td>
+                　<td class="detail-tbody"><%= order.name %></td>
+                　<% total=0 %>
+                　<% order.order_details.each do |order_detail| %>
+                　 <% total += order_detail.quantity %>
+                　 <% end %>
+                　<td class="detail-tbody"><%= total %></td>
+                　<td class="detail-tbody"><%= order.order_status_i18n %></td>
+            　</tr>
+            　<% end %>
+          </tbody>
+        </table>
+    </div>   
+  </div>
+</div>
+<%= paginate @orders %>
+<style>
+    body{
+        background-color:#422814;
+    }
+    .itiran{
+        background: -webkit-gradient(linear, left top, left bottom, from(green), to(orange));
+        background: linear-gradient(green, orange);
+        color:snow;
+        margin-top:35px;
+        margin-bottom:30px;
+    }
+    .hitomitotakashi{
+        font-size:30px;
+        text-align:right;
+    }
+    h4{
+        color: orange;
+    }
+    .blank{
+        -webkit-animation: blink 1s ease-in-out infinite alternate;
+        animation: blink 1s ease-in-out infinite alternate;
+        color:coral;
+    }
+    @-webkit-keyframes blink{
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+    .detail-thead {
+        text-align:center;
+        background: -webkit-gradient(linear, left top, left bottom, from(silver), to(gray));
+        background: linear-gradient(silver, gray);
+        color: snow;
+    }
+    .detail-tbody {
+        background-color: snow;
+        color: green;
+    }
+</style>

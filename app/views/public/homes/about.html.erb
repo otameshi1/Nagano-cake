@@ -1,7 +1,100 @@
-<h1>About</h1>
-<p>ながのCAKEは全国発送可能なケーキ屋さんです。</br>
-    お子様からお年寄りの方までお召し上がりいただけるよう、</br>
-    様々なバリエーションをご用意しております。</br>
-    また、全国への発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。</br>
-    ぜひご注文ください。
-</p>
+
+<div class="container">
+  <div class="row mt-5 m-5">
+    <div class="col">
+      <h1>About🌼</h1>
+        <p>ながのCAKEは全国発送可能なケーキ屋さんです。</br>
+            お子様からお年寄りの方までお召し上がりいただけるよう、</br>
+            様々なバリエーションをご用意しております。</br>
+            また、全国への発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。</br>
+            ぜひご注文ください。
+        </p>
+    </div>
+  </div>
+  <div class="slideBox">
+  <img class="item1" src="https://df0padvwg331x.cloudfront.net/bp/satueigazou/20190821flashpark/10562x3315826/10562x3315826x1.jpg" alt="">
+  <img class="item1" src="http://dbcn1bdvswqbx.cloudfront.net/client_info/COZY/itemimage/000108134/2020rapu1.jpg" alt="">
+  <img class="item1" src="https://www.wittamer.jp/shared/img/products/img_nou20_1001_01.jpg" alt="">
+</div>
+</div>
+<style>
+  body{
+    background-color:  background: -webkit-gradient(linear, left top, left bottom, from(pink), to(coral));
+        background: linear-gradient(pink, coral);
+  }
+  h1{
+    margin-bottom:20px;
+    color:white;
+    opacity:0.8;
+  }
+  p{
+    color:brown;
+    opacity:0.9;
+  }
+  .slideBox {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+/* imgのみ */
+.item1 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 12s 0s infinite;
+  animation: anime 12s 0s infinite;
+}
+
+.item1:nth-of-type(2) {
+  object-position:top;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+}
+
+.item1:nth-of-type(3) {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+         <h3 class="midashi">ジャンル編集</h3>
+    </div>
+   
+    <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+        <h4><%= f.label :name, "ジャンル名" %>🎉</h4>
+        <%= f.text_field :name %>
+    <%= f.submit "変更を保存",class: "btn btn-success" %>
+    <% end %>
+</div>
+<style>
+    h4{
+        letter-spacing:5px;
+        color:yellow;
+        text-shadow: 2px 3px 4px silver;
+    }
+    body{
+        background-color:#753;
+    }
+    .midashi {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding: 15px;
+        background-color:  background: -webkit-gradient(linear, left top, left bottom, from(#422814), to(gray));
+        background: linear-gradient(#422814, gray);;
+        color: white;
+        opacity:0.7;
+        
+    }
+    .midashi:hover {
+         background: -webkit-gradient(linear, left top, left bottom, from(purple), to(#bc8f8f));
+        background: linear-gradient(purple, black);
+      }
+    
+</style>

@@ -1,8 +1,45 @@
-<h1>会員一覧</h1>
 
-<% @customers.each do |costomers| %>
-<%= costomers.id %>
-<%= link_to costomers.name,admin_product_path(costomers.id) %>
-<%= costomers.email %>
-<%= costomers.is_deleted %>
-<% end %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+  <h4 class="title">会員一覧</h4>
+ <table class="table table-hover m-2">
+    <thead>
+      <tr>
+        <th scope="col">会員ID</th>
+        <th scope="col">氏名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">ステータス</th>
+      </tr>
+    </thead>
+    <% @customer.each do |costomer| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= costomer.id %></th>
+        <td><%= link_to costomer.first_name + costomer.last_name,admin_customer_path(costomer.id) %></td>
+        <td><%= costomer.email %></td>
+
+        <!--falseだったら、退会・入会判断-->
+        <% if costomer.is_deleted == false %>
+        　<td>退会済み</td>
+        <% else %>
+        <td>入会済み</td>
+        <% end %>
+        
+      </tr>
+    </tbody>
+    <% end %>
+ </table>
+ </div>
+   </div>
+   <div class="col">
+     <p class="text-center">
+      <%= paginate @customer,class:'text-center'%>
+      </p>
+      </div>
+     </div>
+
+
+<!-- kaminariが使えない-->

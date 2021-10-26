@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'searches/searches'
+  end
   # ーーーーーーーーーー管理者側ーーーーーーーーーーーー
   devise_for :admin, controllers: {
   sessions: 'admin/sessions'
@@ -8,10 +11,12 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get 'admin/searches' => 'searches#searches'
     resources :customers,only: [:index, :show, :edit, :update]
-    resources :order_details,only: [:index, :show]
+    resources :order_details,only: [:index, :show, :update]
     resources :products,only: [:index, :show, :new, :edit, :update, :create]
-    resources :genres,only: [:edit, :create, :index]
+    resources :genres,only: [:edit, :create, :index, :create, :update]
+    resources :orders,only: [:update]
   end
 
 
@@ -24,17 +29,21 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get "homes/about" => "homes#about"
+    get "/search" => "searches#searches"
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get 'customers/withdraw' => 'customers#withdraw'
+    resources :addresses,only: [:edit, :update, :show, :destroy, :index, :create]
+
+    post 'orders/confirm' => 'orders#confirm'
+
     resources :customers,only: [:edit, :update, :show]
-      get 'customers/unsubscribe' => 'customers#unsubscribe'
-      get 'customers/withdraw' => 'customers#withdraw'
-    resources :address,only: [:edit, :update, :show, :destory, :index, :create]
     resources :orders,only: [:new, :create]
-    resources :order_details,only: [:edit, :update, :show, :destory]
-      get 'order_details/thanks' => 'order_details#thanks'
+    get 'order_details/thanks' => 'order_details#thanks'
+    resources :order_details,only: [:edit, :update, :show, :destory, :index]
     resources :products,only: [:index, :show]
     resource :genres,only: [:index]
-    resources :cart_items,only: [:show, :new, :create, :destroy]
-     delete 'cart_items' => 'cart_items#destroy_all'
+    resources :carts,only: [:new, :update, :destroy, :create]
+      delete 'carts' => 'carts#destroy_all', as: 'cart_destroy'
   end
 
 

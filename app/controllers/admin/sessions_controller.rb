@@ -9,7 +9,9 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
-    admin_orders_details_path
+    # admin_order_details_path
+    #　本来はうえ
+    admin_customers_path
   end
 
   # POST /resource/sign_in

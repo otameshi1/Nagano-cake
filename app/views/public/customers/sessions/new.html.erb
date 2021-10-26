@@ -1,24 +1,37 @@
-<h2>ログイン</h2>
-<h5>会員の方はこちらからログイン</h5>
-
-<table>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= f.email_field :email %></td>
-  </tr>
-  <tr>
-    <td>パスワード</td>
-    <td><%= f.text_field :encrypted_password %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><%= f.submit "ログイン" %></td>
-  </tr>
-  <% end %>
-</table>
-
-<div>
-  <h5>会員登録がお済みでない方</h5></br>
-  <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h2 class="index">ログイン</h2>
+      <h5 class="index">会員の方はこちらからログイン</h5>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "public/customers/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.email_field :email, size: 50, placeholder: "xxxxx@zzz.jp", autofocus: "" %></td>
+            </tr>
+            <tr>
+              <td>パスワード</td>
+              <td><%= f.password_field :password %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      <div>
+        <h5 class>会員登録がお済みでない方</h5></br>
+        <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+.index {
+  margin-bottom:50px ;
+}
+</style>

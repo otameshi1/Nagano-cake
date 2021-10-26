@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <% if @datas.empty? %>
+            <h2>該当する商品はありません</h2>
+        <% end %>
+        <% @datas.each do |product| %>
+            <%= link_to product_path(product.id) do %>
+                <div class="image"><%= attachment_image_tag product, :image, size: "200x200", fallback:"no_image.png" %></div>
+                <div class="name"><%= product.name %></div>
+                <div class="price">¥<%= number_to_currency(product.price,:precision =>0, :format=>"%n%u", :unit=>"円") %>（税抜き）</div>
+            <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
