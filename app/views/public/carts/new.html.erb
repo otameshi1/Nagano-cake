@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h1 class="index">ショッピングカート</h1>
+      <h1 class="index">ショッピングカート <i class="fas fa-shopping-cart"></i></h1>
         <div class="icon"><%= link_to "カートを空にする", cart_destroy_path, method: :delete, class: "btn btn-danger" %></div>
         <% @sum = 0 %>
         <table class="table table-bordered genre-table">
@@ -17,7 +17,7 @@
           <tbody>
             <% @carts.each do |cart| %>
             <tr>
-              <td><%= cart.product.name %></td>
+              <td><%= attachment_image_tag cart.product, :image, size: "100x80" %><%= cart.product.name %></td>
               <% product_tax = cart.product.price * 1.1 %>
               <td><%= number_to_currency(product_tax,:precision =>0, :format=>"%n%u", :unit=>"円") %></td>
               <%= form_with model:cart, url: cart_path(cart.id), local:true do |f| %>
@@ -57,4 +57,5 @@
   .icon2{
     margin-top: 30px;
   }
+
 </style>
