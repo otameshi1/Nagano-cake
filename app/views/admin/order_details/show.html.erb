@@ -52,9 +52,11 @@
         <tbody>
 　        <tr>
 　            <td><%= order_detail.product.name %></td>
-　            <td><%= (order_detail.product.price ).round(0) %></td>
+　            <td><%= number_to_currency(order_detail.product.price, :precision =>0, :unit=>"円", format: "%n %u",strip_insignificant_zeros:true) %></td>
 　            <td><%= order_detail.quantity %></td>
-　            <td><%= (order_detail.purchase_price ) %></td>
+　            <td><%= number_to_currency(order_detail.purchase_price, :precision =>0, :unit=>"円", format: "%n %u",strip_insignificant_zeros:true) %></td>
+
+
               <td>
 <%# ーーーーー制作ステータスーーーーーー %>
           <%= form_with model: order_detail, url: admin_order_detail_path(order_detail),method: :patch, local:true do |f|%>
@@ -79,8 +81,10 @@
 　      <!--商品合計-->
 　      <% total= 0 %>
 　      <% @order_detail.each do |order_detail| %>
-　      <% total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity) %>
+　      <% number_to_currency(total = total + ((order_detail.purchase_price).round(0) * order_detail.quantity), :precision =>0, :unit=>"円", format: "%n %u",strip_insignificant_zeros:true)  %>
         <% end %>
+
+
   <div class="col">
 　      <tr>
 　        <th>商品合計</th>

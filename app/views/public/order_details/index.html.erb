@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>注文履歴一覧</h1>
+  <h1>注文履歴一覧 <i class="fas fa-shopping-basket"></i></h1>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -20,10 +20,10 @@
             <%= order.addresses_name %><br />
             <%= order.name %>
           </td>
-          <td>
+          <td class="margin">
             <% @details = order.order_details %>
             <% @details.each do |detail| %>
-              <%= detail.product.name %><br />
+              <p><%= attachment_image_tag detail.product, :image, size: "50x50" %> :<%= detail.product.name %></p>
             <% end %>
           </td>
           <td><%= order.total_payment %></td>
